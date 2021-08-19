@@ -12,7 +12,10 @@ Route::middleware('auth')->group(function () {
   Route::middleware('is_admin')->group(function () {
     Route::prefix('admin')->group(function () {
       Route::get('/', [AdminController::class, 'index']);
-      Route::get('/setting', [SettingController::class, 'index']);
+      Route::prefix('setting')->group(function () {
+        Route::get('/', [SettingController::class, 'index']);
+        Route::post('/ubah', [SettingController::class, 'update']);
+      });
     });
   });
 });

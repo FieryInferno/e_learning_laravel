@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Agu 2021 pada 04.51
+-- Waktu pembuatan: 19 Agu 2021 pada 07.24
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -56,7 +56,8 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1);
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2021_08_19_031229_create_settings_table', 2);
 
 -- --------------------------------------------------------
 
@@ -69,6 +70,31 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `setting`
+--
+
+CREATE TABLE `setting` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_sekolah` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_aplikasi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_sekolah` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_kepsek` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `copyright` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `setting`
+--
+
+INSERT INTO `setting` (`id`, `id_sekolah`, `logo`, `nama_aplikasi`, `nama_sekolah`, `nama_kepsek`, `copyright`, `created_at`, `updated_at`) VALUES
+(1, '1', 'smpdw.png', 'E - Learning', 'SMPN 1 Sagalaherang', 'Drs. I Nyoman Mariana M.Si', 'M. Bagas Setia', NULL, '2021-08-18 22:23:11');
 
 -- --------------------------------------------------------
 
@@ -119,6 +145,12 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indeks untuk tabel `setting`
+--
+ALTER TABLE `setting`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
@@ -139,7 +171,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT untuk tabel `setting`
+--
+ALTER TABLE `setting`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`

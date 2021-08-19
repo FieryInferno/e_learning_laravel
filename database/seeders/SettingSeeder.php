@@ -11,7 +11,8 @@ class SettingSeeder extends Seeder
   public function run()
   {
     DB::table('setting')->insert([
-      'id_sekolah'    => 1,
+      'id'            => 1,
+      'id_sekolah'    => '1',
       'logo'          => 'smpdw.png',
       'nama_aplikasi' => 'E - Learning',
       'nama_sekolah'  => 'SMP DHARMA WIWEKA',

@@ -10,7 +10,8 @@ class CreateSettingsTable extends Migration
   public function up()
   {
     Schema::create('setting', function (Blueprint $table) {
-      $table->id('id_sekolah');
+      $table->id();
+      $table->string('id_sekolah');
       $table->string('logo');
       $table->string('nama_aplikasi');
       $table->string('nama_sekolah');
