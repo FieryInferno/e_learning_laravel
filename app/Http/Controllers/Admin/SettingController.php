@@ -23,7 +23,17 @@ class SettingController extends Controller
 
   public function update(Request $request)
   {
+    // menyimpan data file yang diupload ke variabel $file
+		$file = $request->file('logo');
+
+    // isi dengan nama folder tempat kemana file diupload
+    $tujuan_upload = 'data_file';
+
+    // upload file
+    $file->move('images', $file->getClientOriginalName());
+
     $setting                = $this->setting->first();
+    $setting->logo          = $file->getClientOriginalName();
     $setting->nama_aplikasi = $request->nama_aplikasi;
     $setting->nama_sekolah  = $request->nama_sekolah;
     $setting->nama_kepsek   = $request->nama_kepsek;
