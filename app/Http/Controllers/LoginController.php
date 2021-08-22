@@ -25,13 +25,13 @@ class LoginController extends Controller
 
       switch (auth()->user()->role) {
         case 'admin':
-          return redirect()->intended('admin');
+          return redirect()->intended('admin')->with('sukses', 'Berhasil login sebagai admin');
           break;
         case 'guru':
-          return redirect()->intended('guru');
+          return redirect()->intended('guru')->with('sukses', 'Berhasil login sebagai guru');
           break;
         case 'siswa':
-          return redirect()->intended('siswa');
+          return redirect()->intended('siswa')->with('sukses', 'Berhasil login sebagai siswa');
           break;
       }
     }
@@ -45,6 +45,6 @@ class LoginController extends Controller
 
     $request->session()->regenerateToken();
 
-    return redirect('/');
+    return redirect('/')->with('sukses', 'Berhasil logout');
   }
 }

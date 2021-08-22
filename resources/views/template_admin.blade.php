@@ -207,6 +207,15 @@
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
   <script>
+
+@if (session('sukses'))
+  swal({
+    title : 'SUKSES',
+    text  :  '{{ session('sukses') }}',
+    type  : 'success',
+    timer : 3000
+  });
+@endif
     $(document).ready(function() {
       $('#data').DataTable();
 
@@ -214,7 +223,7 @@
         filebrowserImageBrowseUrl : '../vendor/kcfinder',
         // uiColor:'#1991eb'
       });
-    } );
+    });
   </script>
 </body>
 </html>
