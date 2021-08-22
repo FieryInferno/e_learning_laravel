@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Agu 2021 pada 15.03
+-- Waktu pembuatan: 22 Agu 2021 pada 16.42
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -40,6 +40,20 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `kelas`
+--
+
+CREATE TABLE `kelas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_kelas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_kelas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `migrations`
 --
 
@@ -57,7 +71,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2021_08_19_031229_create_settings_table', 2);
+(4, '2021_08_19_031229_create_settings_table', 2),
+(5, '2021_08_22_142859_create_kelas_table', 3);
 
 -- --------------------------------------------------------
 
@@ -119,7 +134,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `id_user`, `username`, `nama_lengkap`, `password`, `role`, `foto`, `created_at`, `updated_at`) VALUES
-(1, '1', 'admin', 'M. Bagas Setia', '$2y$10$Kma9U2NCDnCgp59Q9Pxc0utGKgRXrMIovgAoJW8YBq0NkWSXMaAX2', 'admin', 'pancasila.PNG', NULL, NULL),
+(1, '1', 'bagassetia', 'M. Bagas Setia Permana', '$2y$10$8dmWprRenWxUsShOB6O.0uWtgnkmionsSq4fBJrTceZhzRD.UD2a2', 'admin', 'Foto_Wisuda4.jpg', NULL, '2021-08-22 06:59:24'),
 (2, '2', 'guru', 'Sutardjo', '$2y$10$SnLhvT4qDcp7mV1YZoCfb.r.GFSnD1n5pLewODd3xC55FbKcMwUhe', 'guru', 'pancasila.PNG', NULL, NULL),
 (3, '3', 'siswa', 'Cici Febriani', '$2y$10$Hr2gDefGDgjMamzoh6HnhuLGzvrPCILdIK7OV3W0eFStFiBDOF/G6', 'siswa', 'pancasila.PNG', NULL, NULL);
 
@@ -133,6 +148,12 @@ INSERT INTO `users` (`id`, `id_user`, `username`, `nama_lengkap`, `password`, `r
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indeks untuk tabel `kelas`
+--
+ALTER TABLE `kelas`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `migrations`
@@ -170,10 +191,16 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `kelas`
+--
+ALTER TABLE `kelas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `setting`

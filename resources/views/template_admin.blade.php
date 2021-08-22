@@ -69,14 +69,14 @@
             <a class="nav-link" href="index.php"><img class="menu-icon" src="{{ asset('images/menu_icons/027-tutorial.png') }}" alt="menu icon" style="width:30px;height:30px;"><span class="menu-title">DASHBOARD</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#masterData" aria-expanded="false" aria-controls="general-pages"><img class="menu-icon" src="{{ asset('images/menu_icons/') }}108-folder1.png" alt="menu icon" style="width:30px;height:30px;"><span class="menu-title"> DATA MASTER </span><i class="menu-arrow"></i>
+            <a class="nav-link" data-toggle="collapse" href="#masterData" aria-expanded="false" aria-controls="general-pages"><img class="menu-icon" src="{{ asset('images/menu_icons/108-folder1.png') }}" alt="menu icon" style="width:30px;height:30px;"><span class="menu-title"> DATA MASTER </span><i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="masterData" style="background-color:#c7dcd0;">
               <ul class="nav flex-column sub-menu" style="margin-left:-34px;">
                 <p></p>
                 <li class="nav-item">
-                  <a class="nav-link" href="?page=kelas" style="color:#000;">
-                    <img class="menu-icon" src="{{ asset('images/menu_icons/') }}tag.png" alt="menu icon" style="width:15px;height:15px;">
+                  <a class="nav-link" href="/admin/kelas" style="color:#000;">
+                    <img class="menu-icon" src="{{ asset('images/menu_icons/tag.png') }}" alt="menu icon" style="width:15px;height:15px;">
                     <span class="menu-title">Master Kelas</span>
                   </a>
                 </li>
