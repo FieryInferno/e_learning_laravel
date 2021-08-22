@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\SemesterController;
+use App\Http\Controllers\Admin\MataPelajaranController;
 
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -33,6 +34,10 @@ Route::middleware('auth')->group(function () {
 
       Route::prefix('semester')->group(function () {
         Route::get('/', [SemesterController::class, 'index']);
+      });
+
+      Route::prefix('mata_pelajaran')->group(function () {
+        Route::get('/', [MataPelajaranController::class, 'index']);
       });
     });
   });

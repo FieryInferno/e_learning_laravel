@@ -88,8 +88,8 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="?page=mapel" style="color:#000;">
-                    <img class="menu-icon" src="{{ asset('images/menu_icons/') }}tag.png" alt="menu icon" style="width:15px;height:15px;"><span class="menu-title">Master Mata Pelajaran</span>
+                  <a class="nav-link" href="/admin/mata_pelajaran" style="color:#000;">
+                    <img class="menu-icon" src="{{ asset('images/menu_icons/tag.png') }}" alt="menu icon" style="width:15px;height:15px;"><span class="menu-title">Master Mata Pelajaran</span>
                   </a>
                 </li>
 

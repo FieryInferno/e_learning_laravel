@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Agu 2021 pada 17.26
+-- Waktu pembuatan: 22 Agu 2021 pada 17.42
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -54,6 +54,20 @@ CREATE TABLE `kelas` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `mata_pelajaran`
+--
+
+CREATE TABLE `mata_pelajaran` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_mata_pelajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_mata_pelajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `migrations`
 --
 
@@ -73,7 +87,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2021_08_19_031229_create_settings_table', 2),
 (5, '2021_08_22_142859_create_kelas_table', 3),
-(6, '2021_08_22_151435_create_semesters_table', 4);
+(6, '2021_08_22_151435_create_semesters_table', 4),
+(7, '2021_08_22_153401_create_mata_pelajarans_table', 5);
 
 -- --------------------------------------------------------
 
@@ -179,6 +194,12 @@ ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `mata_pelajaran`
+--
+ALTER TABLE `mata_pelajaran`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
@@ -226,10 +247,16 @@ ALTER TABLE `kelas`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT untuk tabel `mata_pelajaran`
+--
+ALTER TABLE `mata_pelajaran`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `semester`

@@ -4,15 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSemestersTable extends Migration
+class CreateMataPelajaransTable extends Migration
 {
   
   public function up()
   {
-    Schema::create('semester', function (Blueprint $table) {
+    Schema::create('mata_pelajaran', function (Blueprint $table) {
       $table->id();
-      $table->string('id_semester');
-      $table->string('nama_semester');
+      $table->string('id_mata_pelajaran');
+      $table->string('nama_mata_pelajaran');
       $table->timestamps();
     });
   }
@@ -24,6 +24,6 @@ class CreateSemestersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('semesters');
+        Schema::dropIfExists('mata_pelajaran');
     }
 }
