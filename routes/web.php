@@ -5,7 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\SettingController;
 
-Route::get('/', [LoginController::class, 'login']);
+Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::middleware('auth')->group(function () {
@@ -22,4 +22,6 @@ Route::middleware('auth')->group(function () {
       });
     });
   });
+
+  Route::get('/logout', [LoginController::class, 'logout']);
 });

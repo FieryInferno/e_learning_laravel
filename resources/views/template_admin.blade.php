@@ -140,7 +140,7 @@
           </li>
           <hr>
           <li class="nav-item purchase-button">
-            <a class="nav-link" href="logout.php" style="background-image: -webkit-linear-gradient(left, #4d9be6 1%, #4d65b4 100%); background-color: #8fd3ff !important;">KELUAR</a>
+            <a class="nav-link" style="background-image: -webkit-linear-gradient(left, #4d9be6 1%, #4d65b4 100%); background-color: #8fd3ff !important;" data-toggle="modal" data-target="#logout">KELUAR</a>
           </li>
         </ul>
       </nav>
@@ -167,6 +167,27 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
+<!-- Modal Logout-->
+<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Anda yakin akan mengubah profile?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <a class="nav-link btn btn-primary" href="/logout">KELUAR</a>
+      </div>
+    </div>
+  </div>
+</div>
   
   <!-- container-scroller -->
   <!-- plugins:js -->
