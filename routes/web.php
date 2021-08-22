@@ -38,6 +38,9 @@ Route::middleware('auth')->group(function () {
 
       Route::prefix('mata_pelajaran')->group(function () {
         Route::get('/', [MataPelajaranController::class, 'index']);
+        Route::post('/tambah', [MataPelajaranController::class, 'store']);
+        Route::post('/edit/{id}', [MataPelajaranController::class, 'update']);
+        Route::post('/hapus/{id}', [MataPelajaranController::class, 'destroy']);
       });
     });
   });

@@ -26,70 +26,31 @@ class MataPelajaranController extends Controller
     $data['mata_pelajaran'] = $this->mata_pelajaran->get();
     return view('admin/mata_pelajaran', $data);
   }
+  
+  public function store(Request $request)
+  {
+    $this->mata_pelajaran->id_mata_pelajaran    = uniqid('mapel');
+    $this->mata_pelajaran->nama_mata_pelajaran  = $request->nama_mata_pelajaran;
+    $this->mata_pelajaran->save();
+    return redirect('admin/mata_pelajaran')->with('sukses', 'Berhasil tambah mata pelajaran');
+  }
+  
+  public function update(Request $request, $id)
+  {
+    $mata_pelajaran = $this->mata_pelajaran->find($id);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    $mata_pelajaran->nama_mata_pelajaran  = $request->nama_mata_pelajaran;
+    $mata_pelajaran->save();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    return redirect('admin/mata_pelajaran')->with('sukses', 'Berhasil edit mata pelajaran');
+  }
+  
+  public function destroy($id)
+  {
+    $mata_pelajaran = $this->mata_pelajaran->find($id);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    $mata_pelajaran->delete();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    return redirect('admin/mata_pelajaran')->with('sukses', 'Berhasil hapus mata pelajaran');
+  }
 }
