@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Agu 2021 pada 07.24
+-- Waktu pembuatan: 22 Agu 2021 pada 15.03
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -94,7 +94,7 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `id_sekolah`, `logo`, `nama_aplikasi`, `nama_sekolah`, `nama_kepsek`, `copyright`, `created_at`, `updated_at`) VALUES
-(1, '1', 'smpdw.png', 'E - Learning', 'SMPN 1 Sagalaherang', 'Drs. I Nyoman Mariana M.Si', 'M. Bagas Setia', NULL, '2021-08-18 22:23:11');
+(1, '1', 'pancasila.PNG', 'E - Learning', 'SMPN 1 Sagalaherang', 'Drs. I Nyoman Mariana M.Si', 'M. Bagas Setia', NULL, '2021-08-18 23:40:07');
 
 -- --------------------------------------------------------
 
@@ -106,8 +106,10 @@ CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `id_user` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_lengkap` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `role` enum('admin','guru','siswa') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -116,10 +118,10 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `id_user`, `username`, `password`, `role`, `created_at`, `updated_at`) VALUES
-(1, '1', 'admin', '$2y$10$Kma9U2NCDnCgp59Q9Pxc0utGKgRXrMIovgAoJW8YBq0NkWSXMaAX2', 'admin', NULL, NULL),
-(2, '2', 'guru', '$2y$10$SnLhvT4qDcp7mV1YZoCfb.r.GFSnD1n5pLewODd3xC55FbKcMwUhe', 'guru', NULL, NULL),
-(3, '3', 'siswa', '$2y$10$Hr2gDefGDgjMamzoh6HnhuLGzvrPCILdIK7OV3W0eFStFiBDOF/G6', 'siswa', NULL, NULL);
+INSERT INTO `users` (`id`, `id_user`, `username`, `nama_lengkap`, `password`, `role`, `foto`, `created_at`, `updated_at`) VALUES
+(1, '1', 'admin', 'M. Bagas Setia', '$2y$10$Kma9U2NCDnCgp59Q9Pxc0utGKgRXrMIovgAoJW8YBq0NkWSXMaAX2', 'admin', 'pancasila.PNG', NULL, NULL),
+(2, '2', 'guru', 'Sutardjo', '$2y$10$SnLhvT4qDcp7mV1YZoCfb.r.GFSnD1n5pLewODd3xC55FbKcMwUhe', 'guru', 'pancasila.PNG', NULL, NULL),
+(3, '3', 'siswa', 'Cici Febriani', '$2y$10$Hr2gDefGDgjMamzoh6HnhuLGzvrPCILdIK7OV3W0eFStFiBDOF/G6', 'siswa', 'pancasila.PNG', NULL, NULL);
 
 --
 -- Indexes for dumped tables

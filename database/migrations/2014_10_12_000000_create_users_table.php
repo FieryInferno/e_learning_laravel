@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
         $table->string('nama_lengkap');
         $table->string('password');
         $table->enum('role', ['admin', 'guru', 'siswa']);
+        $table->string('foto');
         $table->timestamps();
       });
     }

@@ -18,6 +18,13 @@ class AdminController extends Controller
   
   public function index()
   {
-    return view('admin/dashboard', $this->konfigurasi);
+    $data['konfigurasi']  = $this->konfigurasi;
+    return view('admin/dashboard', $data);
+  }
+
+  public function profile()
+  {
+    $data['konfigurasi']  = $this->konfigurasi;
+    return view('admin/profile', $data);
   }
 }

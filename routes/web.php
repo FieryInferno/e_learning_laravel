@@ -16,6 +16,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [SettingController::class, 'index']);
         Route::post('/ubah', [SettingController::class, 'update']);
       });
+      Route::prefix('profile')->group(function () {
+        Route::get('/', [AdminController::class, 'profile']);
+      });
     });
   });
 });
