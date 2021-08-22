@@ -77,7 +77,7 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                              <a href="hapus/{{ $kelas->id_kelas }}" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                              <a href="/admin/kelas/hapus/{{ $kelas->id }}" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
                             </div>
                           </div>
                         </div>

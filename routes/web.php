@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [KelasController::class, 'index']);
         Route::post('/tambah', [KelasController::class, 'store']);
         Route::post('/edit/{id}', [KelasController::class, 'update']);
+        Route::get('/hapus/{id}', [KelasController::class, 'destroy']);
       });
     });
   });

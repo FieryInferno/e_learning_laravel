@@ -44,15 +44,13 @@ class KelasController extends Controller
     
     return redirect('admin/kelas')->with('sukses', 'Berhasil edit kelas');
   }
+  
+  public function destroy($id)
+  {
+    $kelas  = $this->kelas->find($id);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    $kelas->delete();
+
+    return redirect('admin/kelas')->with('sukses', 'Berhasil hapus kelas');
+  }
 }
