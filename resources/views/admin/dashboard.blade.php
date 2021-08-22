@@ -8,7 +8,7 @@
         <div class="card">
           <div class="card-body">
             <center>
-              <h2>Selamat datang di <strong> textlogo</strong> <br>nama_sekolah</h2>
+              <h2>Selamat datang di <strong> {{ $nama_aplikasi }}</strong> <br>{{ $nama_sekolah }}</h2>
             </center>
           </div>
         </div> 

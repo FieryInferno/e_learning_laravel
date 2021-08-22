@@ -27,8 +27,8 @@
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="background: #4d9be6;">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center" style="background-color: #4d9be6;">
         <a class="navbar-brand brand-logo" href="index.php" style="font-family:Aegyptus;font-weight: bold;font-size: 30px;">
-          <img src="../vendor/images/logo" alt="logo" style="height: 45px;width: 45px;border-radius: 10px;">
-          <!-- <i class="fa fa-graduation-cap"></i> --><b>textlogo</b>
+          <img src="{{ asset('images/' . $logo) }}" alt="logo" style="height: 45px;width: 45px;border-radius: 10px;">
+          <!-- <i class="fa fa-graduation-cap"></i> --><b>{{ $nama_aplikasi }}</b>
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
           <!-- <img src="../vendor/images/logo.png" alt="logo"/> -->
@@ -39,7 +39,7 @@
           <li class="nav-item" style="width: 400px;">
             <a href="#" style="color: #fff;text-decoration: none;">
               <!-- <img src="../vendor/images/smk.png" style="height: 40px;border-radius:10px;"> &nbsp; -->
-            <b>nama_sekolah</b>
+            <b>{{ $nama_sekolah }}</b>
             </a>
           </li>
         </ul>
@@ -57,7 +57,7 @@
             <div class="nav-link">
               <div class="profile-image"> <img src="../vendor/images/img_Guru/foto']; ?>" alt="image" style="border-radius: 0px;"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
-                <p class="name">nama_lengkap</p>
+                <p class="name">{{ auth()->user()->nama_lengkap }}</p>
                 <p class="designation">Admin</p>
               </div>
             </div>
@@ -152,10 +152,10 @@
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-info d-block text-center text-sm-left d-sm-inline-block">
-              copyright
+              copyright {{ $copyright }}
             </span>
 
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">nama_sekolah<i class="fa fa-graduation-cap text-danger"></i></span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">{{ $nama_sekolah }}<i class="fa fa-graduation-cap text-danger"></i></span>
           </div>
         </footer>
         <!-- partial -->
