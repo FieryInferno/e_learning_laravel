@@ -32,42 +32,18 @@ class KelasController extends Controller
     $this->kelas->id_kelas    = uniqid('kelas');
     $this->kelas->nama_kelas  = $request->nama_kelas;
     $this->kelas->save();
-    return redirect('admin/kelas');
+    return redirect('admin/kelas')->with('sukses', 'Berhasil tambah kelas');
   }
+  
+  public function update(Request $request, $id)
+  {
+    $kelas  = $this->kelas->find($id);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    $kelas->nama_kelas  = $request->nama_kelas;
+    $kelas->save();
+    
+    return redirect('admin/kelas')->with('sukses', 'Berhasil edit kelas');
+  }
 
     /**
      * Remove the specified resource from storage.

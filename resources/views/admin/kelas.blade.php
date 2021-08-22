@@ -46,7 +46,7 @@
                                 <div class="modal-body">
                                   <div class="form-group">
                                     <label for="kelas"> Nama Kelas</label>
-                                    <input type="text" id="kelas" name="kelas" class="form-control" value="{{ $kelas->nama_kelas }}" required>  
+                                    <input type="text" id="nama_kelas" name="nama_kelas" class="form-control" value="{{ $kelas->nama_kelas }}" required>  
                                   </div>
                                 </div>
                                 <div class="modal-footer">
@@ -77,7 +77,7 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                              <a href="?page=kelas&act=del&id={{ $kelas->id_kelas }}" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                              <a href="hapus/{{ $kelas->id_kelas }}" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
                             </div>
                           </div>
                         </div>
