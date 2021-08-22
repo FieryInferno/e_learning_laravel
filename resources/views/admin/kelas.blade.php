@@ -29,8 +29,8 @@
                 </tr>                        
               </thead>  
               <tbody>
+                <?php $no = 1; ?>
                 @foreach ($kelas as $kelas)
-                  <?php $no = 1; ?>
                   <tr>
                     <td class="text-center"><b>{{ $no++ }}.</b> </td>
                     <td class="text-center">{{ $kelas->nama_kelas }} </td>

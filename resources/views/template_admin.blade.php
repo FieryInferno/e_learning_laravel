@@ -82,8 +82,8 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="?page=semester" style="color:#000;">
-                    <img class="menu-icon" src="{{ asset('images/menu_icons/') }}tag.png" alt="menu icon" style="width:15px;height:15px;"><span class="menu-title">Master Semester</span>
+                  <a class="nav-link" href="/admin/semester" style="color:#000;">
+                    <img class="menu-icon" src="{{ asset('images/menu_icons/tag.png') }}" alt="menu icon" style="width:15px;height:15px;"><span class="menu-title">Master Semester</span>
                   </a>
                 </li>
 

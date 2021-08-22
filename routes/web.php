@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\KelasController;
+use App\Http\Controllers\Admin\SemesterController;
 
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -28,6 +29,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/tambah', [KelasController::class, 'store']);
         Route::post('/edit/{id}', [KelasController::class, 'update']);
         Route::get('/hapus/{id}', [KelasController::class, 'destroy']);
+      });
+
+      Route::prefix('semester')->group(function () {
+        Route::get('/', [SemesterController::class, 'index']);
       });
     });
   });

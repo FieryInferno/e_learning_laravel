@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Agu 2021 pada 16.42
+-- Waktu pembuatan: 22 Agu 2021 pada 17.26
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -72,7 +72,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2021_08_19_031229_create_settings_table', 2),
-(5, '2021_08_22_142859_create_kelas_table', 3);
+(5, '2021_08_22_142859_create_kelas_table', 3),
+(6, '2021_08_22_151435_create_semesters_table', 4);
 
 -- --------------------------------------------------------
 
@@ -85,6 +86,28 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `semester`
+--
+
+CREATE TABLE `semester` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_semester` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_semester` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `semester`
+--
+
+INSERT INTO `semester` (`id`, `id_semester`, `nama_semester`, `created_at`, `updated_at`) VALUES
+(1, '1', 'GANJIL', NULL, NULL),
+(2, '2', 'GENAP', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -168,6 +191,12 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indeks untuk tabel `semester`
+--
+ALTER TABLE `semester`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `setting`
 --
 ALTER TABLE `setting`
@@ -194,13 +223,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `semester`
+--
+ALTER TABLE `semester`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `setting`
