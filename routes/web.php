@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\MataPelajaranController;
+use App\Http\Controllers\Admin\JenisUlanganController;
 
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -41,6 +42,13 @@ Route::middleware('auth')->group(function () {
         Route::post('/tambah', [MataPelajaranController::class, 'store']);
         Route::post('/edit/{id}', [MataPelajaranController::class, 'update']);
         Route::get('/hapus/{id}', [MataPelajaranController::class, 'destroy']);
+      });
+
+      Route::prefix('jenis_ulangan')->group(function () {
+        Route::get('/', [JenisUlanganController::class, 'index']);
+        Route::post('/tambah', [JenisUlanganController::class, 'store']);
+        Route::post('/edit/{id}', [JenisUlanganController::class, 'update']);
+        Route::get('/hapus/{id}', [JenisUlanganController::class, 'destroy']);
       });
     });
   });

@@ -94,8 +94,8 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="?page=jenisujian" style="color:#000;">
-                    <img class="menu-icon" src="{{ asset('images/menu_icons/') }}tag.png" alt="menu icon" style="width:15px;height:15px;"><span class="menu-title">Master Jenis Ulangan</span>
+                  <a class="nav-link" href="/admin/jenis_ulangan" style="color:#000;">
+                    <img class="menu-icon" src="{{ asset('images/menu_icons/tag.png') }}" alt="menu icon" style="width:15px;height:15px;"><span class="menu-title">Master Jenis Ulangan</span>
                   </a>
                 </li>
                 <li class="nav-item">
