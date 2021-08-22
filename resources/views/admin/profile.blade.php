@@ -12,6 +12,14 @@
             </p>
             <form class="forms-sample" method="post" action="/admin/profile/ubah" enctype="multipart/form-data">
               @csrf
+              @if (session('sukses'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  {{ session('sukses') }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              @endif
               <input type="hidden"  name="id_user" value="{{ auth()->user()->id_user }}">
               <div class="form-group">
                 <label>Nama Lengkap</label>

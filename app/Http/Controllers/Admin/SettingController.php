@@ -26,9 +26,6 @@ class SettingController extends Controller
     // menyimpan data file yang diupload ke variabel $file
 		$file = $request->file('logo');
 
-    // isi dengan nama folder tempat kemana file diupload
-    $tujuan_upload = 'data_file';
-
     // upload file
     $file->move('images', $file->getClientOriginalName());
 

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
@@ -43,8 +45,23 @@ class AdminController extends Controller
     $user->nama_lengkap = $request->nama_lengkap;
     $user->username     = $request->username;
 
+    if ($request->password_lama && $request->password_baru) {
+      if (password_verify($request->password_lama, auth()->user()->password)) {
+        $user->password = Hash::make($request->password_baru);
+      }
+    }
+
+    $foto = $request->file('foto');
+    if ($foto) {
+      $foto->move('images', $foto->getClientOriginalName());
+      if(File::exists(public_path('images/' . $user->foto))){
+        File::delete(public_path('images/' . $user->foto));
+      }
+      $user->foto = $foto->getClientOriginalName();
+    }
+
     $user->save();
 
-    return redirect('admin/profile');
+    return redirect('admin/profile')->with('sukses', 'Berhasil edit profile');
   }
 }
