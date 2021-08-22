@@ -8,7 +8,7 @@
         <div class="card">
           <div class="card-body">
           <p class="card-description">
-            <a data-toggle="modal" data-target="#add" class="btn btn-info text-white pull-right"><i class="fa fa-plus"></i> Tambah Kelas</a> <br>
+            <a data-toggle="modal" data-target="#add" class="btn btn-info text-white"><i class="fa fa-plus"></i> Tambah Kelas</a> <br>
           </p>
           <h4 class="card-title">Data Kelas</h4>
           <div class="table-responsive">
@@ -30,7 +30,7 @@
               </thead>  
               <tbody>
                 @foreach ($kelas as $kelas)
-                  {{ $no = 1 }}
+                  <?php $no = 1; ?>
                   <tr>
                     <td class="text-center"><b>{{ $no++ }}.</b> </td>
                     <td class="text-center">{{ $kelas->nama_kelas }} </td>
@@ -41,11 +41,11 @@
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header"><h4 class="modal-title"> Edit Kelas </h4></div>
-                              <form action="" method="post">
+                              <form action="/admin/kelas/edit/{{ $kelas->id }}" method="post">
+                                @csrf
                                 <div class="modal-body">
                                   <div class="form-group">
                                     <label for="kelas"> Nama Kelas</label>
-                                    <input type="hidden" name="id" value="{{ $kelas->id_kelas }}"> 
                                     <input type="text" id="kelas" name="kelas" class="form-control" value="{{ $kelas->nama_kelas }}" required>  
                                   </div>
                                 </div>
@@ -93,4 +93,26 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal Detail-->
+  <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header"><h4 class="modal-title"> Tambah Kelas </h4></div>
+          <form action="/admin/kelas/tambah" method="post">
+            @csrf
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="kelas"> Nama Kelas</label>
+                <input type="text" id="nama_kelas" name="nama_kelas" class="form-control" placeholder="Kelas" required>                    
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+              <button name="save" type="submit" class="btn btn-info"> Simpan</button>
+            </div>
+          </form>
+        </div>         
+      </div>
+    </div>
 @endsection

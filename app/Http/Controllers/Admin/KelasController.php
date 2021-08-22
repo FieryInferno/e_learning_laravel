@@ -26,27 +26,14 @@ class KelasController extends Controller
     $data['kelas']        = $this->kelas->get();
     return view('admin/kelas', $data);
   }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  
+  public function store(Request $request)
+  {
+    $this->kelas->id_kelas    = uniqid('kelas');
+    $this->kelas->nama_kelas  = $request->nama_kelas;
+    $this->kelas->save();
+    return redirect('admin/kelas');
+  }
 
     /**
      * Display the specified resource.

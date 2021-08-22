@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
 
       Route::prefix('kelas')->group(function () {
         Route::get('/', [KelasController::class, 'index']);
+        Route::post('/tambah', [KelasController::class, 'store']);
       });
     });
   });
