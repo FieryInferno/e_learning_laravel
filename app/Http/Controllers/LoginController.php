@@ -33,8 +33,11 @@ class LoginController extends Controller
         case 'siswa':
           return redirect()->intended('siswa')->with('sukses', 'Berhasil login sebagai siswa');
           break;
+
       }
     }
+
+    return back()->with(['error' => 'Username atau password salah']);
   }
 
   public function logout(Request $request)

@@ -208,14 +208,24 @@
   <!-- End custom js for this page-->
   <script>
 
-@if (session('sukses'))
-  swal({
-    title : 'SUKSES',
-    text  :  '{{ session('sukses') }}',
-    type  : 'success',
-    timer : 3000
-  });
-@endif
+    @if (session('sukses'))
+      swal({
+        title : 'SUKSES',
+        text  :  '{{ session('sukses') }}',
+        type  : 'success',
+        timer : 3000
+      });
+    @endif
+
+    @if (session('error'))
+      swal({
+        title : 'GAGAL',
+        text  :  '{{ session('error') }}',
+        type  : 'error',
+        timer : 3000
+      });
+    @endif
+
     $(document).ready(function() {
       $('#data').DataTable();
 
