@@ -26,27 +26,14 @@ class JenisUlanganController extends Controller
     $data['jenis_ulangan']  = $this->jenis_ulangan->get();
     return view('admin/jenis_ulangan', $data);
   }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  
+  public function store(Request $request)
+  {
+    $this->jenis_ulangan->id_jenis_ulangan    = uniqid('jenis_ulangan');
+    $this->jenis_ulangan->nama_jenis_ulangan  = $request->nama_jenis_ulangan;
+    $this->jenis_ulangan->save();
+    return redirect('admin/jenis_ulangan')->with('sukses', 'Berhasil menambahkan jenis ulangan');
+  }
 
     /**
      * Display the specified resource.

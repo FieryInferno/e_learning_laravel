@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Agu 2021 pada 17.42
+-- Waktu pembuatan: 23 Agu 2021 pada 02.01
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -36,6 +36,27 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `jenis_ulangan`
+--
+
+CREATE TABLE `jenis_ulangan` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_jenis_ulangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_jenis_ulangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `jenis_ulangan`
+--
+
+INSERT INTO `jenis_ulangan` (`id`, `id_jenis_ulangan`, `nama_jenis_ulangan`, `created_at`, `updated_at`) VALUES
+(1, 'jenis_ulangan6122e42480ddc', 'Ulangan Harian', '2021-08-22 16:56:20', '2021-08-22 16:56:20');
 
 -- --------------------------------------------------------
 
@@ -88,7 +109,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2021_08_19_031229_create_settings_table', 2),
 (5, '2021_08_22_142859_create_kelas_table', 3),
 (6, '2021_08_22_151435_create_semesters_table', 4),
-(7, '2021_08_22_153401_create_mata_pelajarans_table', 5);
+(7, '2021_08_22_153401_create_mata_pelajarans_table', 5),
+(8, '2021_08_22_234430_create_jenis_ulangans_table', 6);
 
 -- --------------------------------------------------------
 
@@ -188,6 +210,12 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indeks untuk tabel `jenis_ulangan`
+--
+ALTER TABLE `jenis_ulangan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
@@ -241,6 +269,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `jenis_ulangan`
+--
+ALTER TABLE `jenis_ulangan`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
@@ -250,13 +284,13 @@ ALTER TABLE `kelas`
 -- AUTO_INCREMENT untuk tabel `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `semester`
