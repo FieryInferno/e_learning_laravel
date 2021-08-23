@@ -46,14 +46,12 @@ class JenisUlanganController extends Controller
     return redirect('admin/jenis_ulangan')->with('sukses', 'Berhasil mengedit jenis ulangan');
   }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+  public function destroy($id)
+  {
+    $jenis_ulangan  = $this->jenis_ulangan->find($id);
+    
+    $jenis_ulangan->delete();
+
+    return redirect('admin/jenis_ulangan')->with('sukses', 'Berhasil menghapus jenis ulangan');
+  }
 }
