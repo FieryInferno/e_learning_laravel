@@ -34,40 +34,17 @@ class JenisUlanganController extends Controller
     $this->jenis_ulangan->save();
     return redirect('admin/jenis_ulangan')->with('sukses', 'Berhasil menambahkan jenis ulangan');
   }
+  
+  public function update(Request $request, $id)
+  {
+    $jenis_ulangan  = $this->jenis_ulangan->find($id);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    $jenis_ulangan->nama_jenis_ulangan  = $request->nama_jenis_ulangan;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    $jenis_ulangan->save();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    return redirect('admin/jenis_ulangan')->with('sukses', 'Berhasil mengedit jenis ulangan');
+  }
 
     /**
      * Remove the specified resource from storage.
