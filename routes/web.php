@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\MataPelajaranController;
 use App\Http\Controllers\Admin\JenisUlanganController;
+use App\Http\Controllers\Admin\JadwalController;
 
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -49,6 +50,13 @@ Route::middleware('auth')->group(function () {
         Route::post('/tambah', [JenisUlanganController::class, 'store']);
         Route::post('/edit/{id}', [JenisUlanganController::class, 'update']);
         Route::get('/hapus/{id}', [JenisUlanganController::class, 'destroy']);
+      });
+
+      Route::prefix('jadwal')->group(function () {
+        Route::get('/', [JadwalController::class, 'index']);
+        Route::post('/tambah', [JadwalController::class, 'store']);
+        Route::post('/edit/{id}', [JadwalController::class, 'update']);
+        Route::get('/hapus/{id}', [JadwalController::class, 'destroy']);
       });
     });
   });
