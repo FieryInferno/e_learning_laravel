@@ -43,7 +43,31 @@
                     <td class="text-center">{{ substr($jadwal->jam_mulai, 0, 5) . ' - ' . substr($jadwal->jam_selesai, 0, 5) }}</td>
                     <td class="text-center"></td>
                     <td class="text-center">
-                      <a href="/admin/jadwal/edit/{{ $jadwal->id }}" class="btn btn-success">Edit</a>
+                      <a href="/admin/jadwal/edit/{{ $jadwal->id }}" class="btn btn-success"><i class="fa fa-pencil"></i> Edit</a>
+
+                      <!-- Button trigger modal -->
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus{{ $jadwal->id }}"><i class="fa fa-trash"></i> Hapus</button>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="hapus{{ $jadwal->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              Anda yakin akan menghapus data jadwal ini?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                              <a href="/admin/jadwal/hapus/{{ $jadwal->id }}" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                 @endforeach                 

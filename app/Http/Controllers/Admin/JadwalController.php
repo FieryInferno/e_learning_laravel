@@ -83,15 +83,13 @@ class JadwalController extends Controller
 
     return redirect('admin/jadwal')->with('sukses', 'Berhasil edit jadwal');
   }
+  
+  public function destroy($id)
+  {
+    $jadwal = $this->jadwal->find($id);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    $jadwal->delete();
+
+    return redirect('admin/jadwal')->with('sukses', 'Berhasil hapus jadwal');
+  }
 }
