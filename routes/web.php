@@ -9,8 +9,9 @@ use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\MataPelajaranController;
 use App\Http\Controllers\Admin\JenisUlanganController;
 use App\Http\Controllers\Admin\JadwalController;
+use App\Http\Controllers\Admin\GuruController;
 
-Route::get('/', [LoginController::class, 'login'])->name('login');
+Route::get('/', [LoginController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::middleware('auth')->group(function () {
@@ -59,6 +60,15 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/{id}', [JadwalController::class, 'edit']);
         Route::post('/edit/{id}', [JadwalController::class, 'update']);
         Route::get('/hapus/{id}', [JadwalController::class, 'destroy']);
+      });
+
+      Route::prefix('guru')->group(function () {
+        Route::get('/', [GuruController::class, 'index']);
+        Route::get('/tambah', [GuruController::class, 'create']);
+        Route::post('/tambah', [GuruController::class, 'store']);
+        Route::get('/edit/{id}', [GuruController::class, 'edit']);
+        Route::post('/edit/{id}', [GuruController::class, 'update']);
+        Route::get('/hapus/{id}', [GuruController::class, 'destroy']);
       });
     });
   });

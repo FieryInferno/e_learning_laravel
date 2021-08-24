@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Agu 2021 pada 15.31
+-- Waktu pembuatan: 24 Agu 2021 pada 16.55
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -40,6 +40,20 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `guru`
+--
+
+CREATE TABLE `guru` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `nip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `jadwal`
 --
 
@@ -55,13 +69,6 @@ CREATE TABLE `jadwal` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `jadwal`
---
-
-INSERT INTO `jadwal` (`id`, `id_jadwal`, `mata_pelajaran_id`, `kelas_id`, `hari`, `jam_mulai`, `jam_selesai`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'jadwal6124f21a04cd8', 2, 2, 'senin', '07:00:00', '09:00:00', 'belum', '2021-08-23 18:20:26', '2021-08-24 06:20:26');
 
 -- --------------------------------------------------------
 
@@ -91,13 +98,6 @@ CREATE TABLE `kelas` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data untuk tabel `kelas`
---
-
-INSERT INTO `kelas` (`id`, `id_kelas`, `nama_kelas`, `created_at`, `updated_at`) VALUES
-(2, 'kelas6124ee2625b51', 'X IPA 1', '2021-08-24 06:03:34', '2021-08-24 06:03:34');
-
 -- --------------------------------------------------------
 
 --
@@ -111,13 +111,6 @@ CREATE TABLE `mata_pelajaran` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `mata_pelajaran`
---
-
-INSERT INTO `mata_pelajaran` (`id`, `id_mata_pelajaran`, `nama_mata_pelajaran`, `created_at`, `updated_at`) VALUES
-(2, 'mapel6124ee0d7a987', 'Matematika Peminatan', '2021-08-24 06:03:09', '2021-08-24 06:03:09');
 
 -- --------------------------------------------------------
 
@@ -136,15 +129,17 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2021_08_19_031229_create_settings_table', 2),
-(5, '2021_08_22_142859_create_kelas_table', 3),
-(6, '2021_08_22_151435_create_semesters_table', 4),
-(7, '2021_08_22_153401_create_mata_pelajarans_table', 5),
-(8, '2021_08_22_234430_create_jenis_ulangans_table', 6),
-(9, '2021_08_23_002148_create_jadwals_table', 7);
+(11, '2014_10_12_000000_create_users_table', 1),
+(12, '2014_10_12_100000_create_password_resets_table', 1),
+(13, '2019_08_19_000000_create_failed_jobs_table', 1),
+(14, '2021_08_19_031229_create_settings_table', 1),
+(15, '2021_08_22_120034_membuat_table_admin', 1),
+(16, '2021_08_22_142859_create_kelas_table', 1),
+(17, '2021_08_22_151435_create_semesters_table', 1),
+(18, '2021_08_22_153401_create_mata_pelajarans_table', 1),
+(19, '2021_08_22_234430_create_jenis_ulangans_table', 1),
+(20, '2021_08_23_002148_create_jadwals_table', 1),
+(21, '2021_08_24_141831_create_gurus_table', 1);
 
 -- --------------------------------------------------------
 
@@ -188,7 +183,7 @@ INSERT INTO `semester` (`id`, `id_semester`, `nama_semester`, `created_at`, `upd
 
 CREATE TABLE `setting` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `id_sekolah` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_sekolah` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_aplikasi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_sekolah` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -203,7 +198,7 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `id_sekolah`, `logo`, `nama_aplikasi`, `nama_sekolah`, `nama_kepsek`, `copyright`, `created_at`, `updated_at`) VALUES
-(1, '1', 'pancasila.PNG', 'E - Learning', 'SMPN 1 Sagalaherang', 'Drs. I Nyoman Mariana M.Si', 'M. Bagas Setia', NULL, '2021-08-18 23:40:07');
+(1, '1', 'smpdw.png', 'E - Learning', 'SMP DHARMA WIWEKA', 'Drs. I Nyoman Mariana M.Si', 'SMP DHARMA WIWEKA', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -215,10 +210,10 @@ CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `id_user` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_lengkap` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_lengkap` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `role` enum('admin','guru','siswa') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -228,9 +223,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `id_user`, `username`, `nama_lengkap`, `password`, `role`, `foto`, `created_at`, `updated_at`) VALUES
-(1, '1', 'bagassetia', 'M. Bagas Setia Permana', '$2y$10$8dmWprRenWxUsShOB6O.0uWtgnkmionsSq4fBJrTceZhzRD.UD2a2', 'admin', 'Foto_Wisuda4.jpg', NULL, '2021-08-22 06:59:24'),
-(2, '2', 'guru', 'Sutardjo', '$2y$10$SnLhvT4qDcp7mV1YZoCfb.r.GFSnD1n5pLewODd3xC55FbKcMwUhe', 'guru', 'pancasila.PNG', NULL, NULL),
-(3, '3', 'siswa', 'Cici Febriani', '$2y$10$Hr2gDefGDgjMamzoh6HnhuLGzvrPCILdIK7OV3W0eFStFiBDOF/G6', 'siswa', 'pancasila.PNG', NULL, NULL);
+(1, '1', 'admin', 'M. Bagas Setia', '$2y$10$o.bt6d8uOH/xk8rPCzEjF.CfzKgvimBTnCYR5IXsG5N/2NHEaz/Pi', 'admin', 'Foto_Wisuda4.jpg', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -242,6 +235,13 @@ INSERT INTO `users` (`id`, `id_user`, `username`, `nama_lengkap`, `password`, `r
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indeks untuk tabel `guru`
+--
+ALTER TABLE `guru`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `guru_user_id_foreign` (`user_id`);
 
 --
 -- Indeks untuk tabel `jadwal`
@@ -311,34 +311,40 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `guru`
+--
+ALTER TABLE `guru`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `jenis_ulangan`
 --
 ALTER TABLE `jenis_ulangan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `semester`
@@ -356,11 +362,17 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
+
+--
+-- Ketidakleluasaan untuk tabel `guru`
+--
+ALTER TABLE `guru`
+  ADD CONSTRAINT `guru_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `jadwal`

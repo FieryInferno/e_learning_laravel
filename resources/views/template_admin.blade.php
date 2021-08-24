@@ -66,7 +66,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.php"><img class="menu-icon" src="{{ asset('images/menu_icons/027-tutorial.png') }}" alt="menu icon" style="width:30px;height:30px;"><span class="menu-title">DASHBOARD</span></a>
+            <a class="nav-link" href="/"><img class="menu-icon" src="{{ asset('images/menu_icons/027-tutorial.png') }}" alt="menu icon" style="width:30px;height:30px;"><span class="menu-title">DASHBOARD</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#masterData" aria-expanded="false" aria-controls="general-pages"><img class="menu-icon" src="{{ asset('images/menu_icons/108-folder1.png') }}" alt="menu icon" style="width:30px;height:30px;"><span class="menu-title"> DATA MASTER </span><i class="menu-arrow"></i>
