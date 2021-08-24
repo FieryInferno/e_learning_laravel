@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [JadwalController::class, 'index']);
         Route::get('/tambah', [JadwalController::class, 'create']);
         Route::post('/tambah', [JadwalController::class, 'store']);
+        Route::get('/edit/{id}', [JadwalController::class, 'edit']);
         Route::post('/edit/{id}', [JadwalController::class, 'update']);
         Route::get('/hapus/{id}', [JadwalController::class, 'destroy']);
       });

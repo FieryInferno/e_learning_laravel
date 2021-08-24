@@ -59,40 +59,30 @@ class JadwalController extends Controller
 
     return redirect('admin/jadwal')->with('sukses', 'Berhasil tambah jadwal');
   }
+  
+  public function edit($id)
+  {
+    $data                   = $this->jadwal->find($id);
+    $data['konfigurasi']    = $this->konfigurasi;
+    $data['mata_pelajaran'] = $this->mata_pelajaran;
+    $data['kelas']          = $this->kelas;
+    return view('admin/edit_jadwal', $data);
+  }
+  
+  public function update(Request $request, $id)
+  {
+    $jadwal = $this->jadwal->find($id);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    $jadwal->mata_pelajaran_id  = $request->mata_pelajaran_id;
+    $jadwal->kelas_id           = $request->kelas_id;
+    $jadwal->hari               = $request->hari;
+    $jadwal->jam_mulai          = $request->jam_mulai;
+    $jadwal->jam_selesai        = $request->jam_selesai;
+    $jadwal->updated_at         = date('Y-m-d h:i:s');
+    $jadwal->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    return redirect('admin/jadwal')->with('sukses', 'Berhasil edit jadwal');
+  }
 
     /**
      * Remove the specified resource from storage.

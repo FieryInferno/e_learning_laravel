@@ -108,14 +108,14 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#evaluasi" aria-expanded="false" aria-controls="general-pages"><img class="menu-icon" src="{{ asset('images/menu_icons/') }}108-folder.png" alt="menu icon" style="width:30px;height:30px;"><span class="menu-title">DATA PENGGUNA</span><i class="menu-arrow"></i>
+            <a class="nav-link" data-toggle="collapse" href="#evaluasi" aria-expanded="false" aria-controls="general-pages"><img class="menu-icon" src="{{ asset('images/menu_icons/108-folder.png') }}" alt="menu icon" style="width:30px;height:30px;"><span class="menu-title">DATA PENGGUNA</span><i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="evaluasi" style="background-color:#c7dcd0;">
               <ul class="nav flex-column sub-menu" style="margin-left:-34px;">
               <p></p>
                 <li class="nav-item">
-                  <a class="nav-link" href="?page=guru" style="color:#000;">
-                    <img class="menu-icon" src="{{ asset('images/menu_icons/') }}115-professor1.png" alt="menu icon" style="width:25px;height:25px;">
+                  <a class="nav-link" href="/admin/guru" style="color:#000;">
+                    <img class="menu-icon" src="{{ asset('images/menu_icons/115-professor1.png') }}" alt="menu icon" style="width:25px;height:25px;">
                     <span class="menu-title">GURU</span>
                   </a>
                 </li>

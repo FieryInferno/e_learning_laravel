@@ -42,7 +42,9 @@
                     <td class="text-center">{{ $jadwal->hari }}</td>
                     <td class="text-center">{{ substr($jadwal->jam_mulai, 0, 5) . ' - ' . substr($jadwal->jam_selesai, 0, 5) }}</td>
                     <td class="text-center"></td>
-                    <td class="text-center">{{ $jadwal->status }}</td>
+                    <td class="text-center">
+                      <a href="/admin/jadwal/edit/{{ $jadwal->id }}" class="btn btn-success">Edit</a>
+                    </td>
                   </tr>
                 @endforeach                 
               </tbody>                      
