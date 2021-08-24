@@ -31,6 +31,7 @@ class JenisUlanganController extends Controller
   {
     $this->jenis_ulangan->id_jenis_ulangan    = uniqid('jenis_ulangan');
     $this->jenis_ulangan->nama_jenis_ulangan  = $request->nama_jenis_ulangan;
+    $this->jenis_ulangan->created_at          = date('Y-m-d h:i:s');
     $this->jenis_ulangan->save();
     return redirect('admin/jenis_ulangan')->with('sukses', 'Berhasil menambahkan jenis ulangan');
   }
@@ -40,6 +41,7 @@ class JenisUlanganController extends Controller
     $jenis_ulangan  = $this->jenis_ulangan->find($id);
 
     $jenis_ulangan->nama_jenis_ulangan  = $request->nama_jenis_ulangan;
+    $jenis_ulangan->updated_at          = date('Y-m-d h:i:s');
 
     $jenis_ulangan->save();
 

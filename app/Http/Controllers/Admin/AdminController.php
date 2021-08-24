@@ -60,6 +60,8 @@ class AdminController extends Controller
       $user->foto = $foto->getClientOriginalName();
     }
 
+    $user->updated_at = date('Y-m-d h:i:s');
+
     $user->save();
 
     return redirect('admin/profile')->with('sukses', 'Berhasil edit profile');

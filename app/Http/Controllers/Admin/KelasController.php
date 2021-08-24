@@ -31,6 +31,7 @@ class KelasController extends Controller
   {
     $this->kelas->id_kelas    = uniqid('kelas');
     $this->kelas->nama_kelas  = $request->nama_kelas;
+    $this->kelas->created_at  = date('Y-m-d h:i:s');
     $this->kelas->save();
     return redirect('admin/kelas')->with('sukses', 'Berhasil tambah kelas');
   }
@@ -40,6 +41,7 @@ class KelasController extends Controller
     $kelas  = $this->kelas->find($id);
 
     $kelas->nama_kelas  = $request->nama_kelas;
+    $kelas->updated_at  = date('Y-m-d h:i:s');
     $kelas->save();
     
     return redirect('admin/kelas')->with('sukses', 'Berhasil edit kelas');

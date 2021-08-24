@@ -6,15 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
 use App\Models\Guru;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class GuruController extends Controller
 {
   private $konfigurasi;
   private $guru;
+  private $user;
 
   public function __construct()
   {
     $this->guru = new Guru;
+    $this->user = new User;
 
     $this->konfigurasi  = new Setting;
     $this->konfigurasi  = $this->konfigurasi->first();
@@ -26,27 +30,35 @@ class GuruController extends Controller
     $data['guru']         = $this->guru->get();
     return view('admin/guru/index', $data);
   }
+  
+  public function create()
+  {
+    $data['konfigurasi']  = $this->konfigurasi;
+    return view('admin/guru/tambah', $data);
+  } 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+  public function store(Request $request)
+  {
+    $id_user  = uniqid('user');
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    $file = $request->file('foto');
+    $file->move('images', $file->getClientOriginalName());
+
+    $this->user->id_user      = $id_user;
+    $this->user->nama_lengkap = $request->nama_lengkap;
+    $this->user->username     = $request->username;
+    $this->user->password     = Hash::make($request->nip);
+    $this->user->foto         = $file->getClientOriginalName();
+    $this->user->created_at   = date('Y-m-d h:i:s');
+    $this->user->save();
+
+    $this->guru->user_id    = $this->user->id;
+    $this->guru->nip        = $request->nip;
+    $this->guru->created_at = date('Y-m-d h:i:s');
+    $this->guru->save();
+
+    return redirect('/admin/guru')->with('sukses', 'Berhasil menambah guru');
+  }
 
     /**
      * Display the specified resource.

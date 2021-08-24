@@ -31,6 +31,7 @@ class MataPelajaranController extends Controller
   {
     $this->mata_pelajaran->id_mata_pelajaran    = uniqid('mapel');
     $this->mata_pelajaran->nama_mata_pelajaran  = $request->nama_mata_pelajaran;
+    $this->mata_pelajaran->created_at           = date('Y-m-d h:i:s');
     $this->mata_pelajaran->save();
     return redirect('admin/mata_pelajaran')->with('sukses', 'Berhasil tambah mata pelajaran');
   }
@@ -40,6 +41,7 @@ class MataPelajaranController extends Controller
     $mata_pelajaran = $this->mata_pelajaran->find($id);
 
     $mata_pelajaran->nama_mata_pelajaran  = $request->nama_mata_pelajaran;
+    $mata_pelajaran->updated_at           = date('Y-m-d h:i:s');
     $mata_pelajaran->save();
 
     return redirect('admin/mata_pelajaran')->with('sukses', 'Berhasil edit mata pelajaran');

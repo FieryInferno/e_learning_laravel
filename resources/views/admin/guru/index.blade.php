@@ -39,15 +39,15 @@
                     <td class="text-center">{{ $g->nip }}</td>
                     <td class="text-center">{{ $g->user->nama_lengkap }}</td>
                     <td class="text-center">{{ $g->user->username }}</td>
-                    <td class="text-center"><img src="{{ asset('$g->user->foto') }}" alt="" width="50%"></td>
+                    <td class="text-center"><img src="{{ asset('images/' . $g->user->foto) }}" alt="" width="32%"></td>
                     <td class="text-center">
-                      <a href="/admin/jadwal/edit/{{ $jadwal->id }}" class="btn btn-success"><i class="fa fa-pencil"></i> Edit</a>
+                      <a href="/admin/jadwal/edit/{{ $g->id }}" class="btn btn-success"><i class="fa fa-pencil"></i> Edit</a>
 
                       <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus{{ $jadwal->id }}"><i class="fa fa-trash"></i> Hapus</button>
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus{{ $g->id }}"><i class="fa fa-trash"></i> Hapus</button>
 
                       <!-- Modal -->
-                      <div class="modal fade" id="hapus{{ $jadwal->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="hapus{{ $g->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -57,11 +57,11 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                              Anda yakin akan menghapus data jadwal ini?
+                              Anda yakin akan menghapus data g ini?
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                              <a href="/admin/jadwal/hapus/{{ $jadwal->id }}" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                              <a href="/admin/g/hapus/{{ $g->id }}" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
                             </div>
                           </div>
                         </div>
