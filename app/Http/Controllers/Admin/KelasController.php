@@ -33,7 +33,7 @@ class KelasController extends Controller
     $this->kelas->nama_kelas  = $request->nama_kelas;
     $this->kelas->created_at  = date('Y-m-d h:i:s');
     $this->kelas->save();
-    return redirect('admin/kelas')->with('sukses', 'Berhasil tambah kelas');
+    return redirect('admin/kelas')->with('sukses', 'BERHASIL TAMBAH KELAS');
   }
   
   public function update(Request $request, $id)
@@ -44,7 +44,7 @@ class KelasController extends Controller
     $kelas->updated_at  = date('Y-m-d h:i:s');
     $kelas->save();
     
-    return redirect('admin/kelas')->with('sukses', 'Berhasil edit kelas');
+    return redirect('admin/kelas')->with('sukses', 'BERHASIL EDIT KELAS');
   }
   
   public function destroy($id)
@@ -53,6 +53,6 @@ class KelasController extends Controller
 
     $kelas->delete();
 
-    return redirect('admin/kelas')->with('sukses', 'Berhasil hapus kelas');
+    return redirect('admin/kelas')->with('sukses', 'BERHASIL HAPUS KELAS');
   }
 }

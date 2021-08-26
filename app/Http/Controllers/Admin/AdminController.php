@@ -54,9 +54,7 @@ class AdminController extends Controller
     $foto = $request->file('foto');
     if ($foto) {
       $foto->move('images', $foto->getClientOriginalName());
-      if(File::exists(public_path('images/' . $user->foto))){
-        File::delete(public_path('images/' . $user->foto));
-      }
+      File::exists(public_path('images/' . $user->foto)) ? File::delete(public_path('images/' . $user->foto)) : '';
       $user->foto = $foto->getClientOriginalName();
     }
 
@@ -64,6 +62,6 @@ class AdminController extends Controller
 
     $user->save();
 
-    return redirect('admin/profile')->with('sukses', 'Berhasil edit profile');
+    return redirect('admin/profile')->with('sukses', 'BERHASIL EDIT PROFILE');
   }
 }

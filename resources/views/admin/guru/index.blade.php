@@ -20,15 +20,15 @@
                 </button>
               </div>
             @endif
-            <table class="table table-condensed table-striped table-hover" id="data">
+            <table class="table table-condensed table-striped table-hover" id="data" width="100%">
               <thead class="bg-dark text-white">
                 <tr>
-                  <th class="text-center">No.</th>
-                  <th class="text-center">NIP</th> 
-                  <th class="text-center">Nama Guru</th> 
-                  <th class="text-center">Username</th>
-                  <th class="text-center">Foto</th>
-                  <th class="text-center">Opsi</th>                 
+                  <th class="text-center" width="5%">No.</th>
+                  <th class="text-center" width="10%">NIP</th> 
+                  <th class="text-center" width="20%">Nama Guru</th> 
+                  <th class="text-center" width="15%">Username</th>
+                  <th class="text-center" width="35%">Foto</th>
+                  <th class="text-center" width="15%">Opsi</th>                 
                 </tr>                        
               </thead>  
               <tbody>
@@ -39,9 +39,9 @@
                     <td class="text-center">{{ $g->nip }}</td>
                     <td class="text-center">{{ $g->user->nama_lengkap }}</td>
                     <td class="text-center">{{ $g->user->username }}</td>
-                    <td class="text-center"><img src="{{ asset('images/' . $g->user->foto) }}" alt="" width="32%"></td>
+                    <td class="text-center"><img src="{{ asset('images/' . $g->user->foto) }}" alt="" width="30%"></td>
                     <td class="text-center">
-                      <a href="/admin/jadwal/edit/{{ $g->id }}" class="btn btn-success"><i class="fa fa-pencil"></i> Edit</a>
+                      <a href="/admin/guru/edit/{{ $g->id }}" class="btn btn-success"><i class="fa fa-pencil"></i> Edit</a>
 
                       <!-- Button trigger modal -->
                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus{{ $g->id }}"><i class="fa fa-trash"></i> Hapus</button>

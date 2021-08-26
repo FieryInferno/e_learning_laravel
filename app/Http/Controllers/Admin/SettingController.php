@@ -23,14 +23,15 @@ class SettingController extends Controller
 
   public function update(Request $request)
   {
-    // menyimpan data file yang diupload ke variabel $file
-		$file = $request->file('logo');
-
-    // upload file
-    $file->move('images', $file->getClientOriginalName());
-
     $setting                = $this->setting->first();
-    $setting->logo          = $file->getClientOriginalName();
+
+    $file = $request->file('logo');
+    if ($file) {
+      $file->move('images', $file->getClientOriginalName());
+      File::exists(public_path('images/' . $setting->logo)) ? File::delete(public_path('images/' . $setting->logo)) : '';
+      $setting->logo          = $file->getClientOriginalName();
+    }
+    
     $setting->nama_aplikasi = $request->nama_aplikasi;
     $setting->nama_sekolah  = $request->nama_sekolah;
     $setting->nama_kepsek   = $request->nama_kepsek;
@@ -38,17 +39,6 @@ class SettingController extends Controller
     $setting->updated_at    = date('Y-m-d H:i:s');
     $setting->save();
 
-    return redirect('admin/setting')->with('sukses', 'Berhasil Mengupdate Setting Aplikasi');
+    return redirect('admin/setting')->with('sukses', 'BERHASIL MENGUPDATE SETTING APLIKASI');
   }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

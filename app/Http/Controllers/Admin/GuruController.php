@@ -57,51 +57,45 @@ class GuruController extends Controller
     $this->guru->created_at = date('Y-m-d h:i:s');
     $this->guru->save();
 
-    return redirect('/admin/guru')->with('sukses', 'Berhasil menambah guru');
+    return redirect('/admin/guru')->with('sukses', 'BERHASIL MENAMBAH GURU');
   }
+  
+  public function edit($id)
+  {
+    $data['guru']                 = $this->guru->find($id);
+    $data['konfigurasi']  = $this->konfigurasi;
+    return view('admin/guru/edit', $data); 
+  }
+  
+  public function update(Request $request, $id)
+  {
+    
+    $guru = $this->guru->find($id);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    $guru->nip        = $request->nip;
+    $guru->updated_at = date('Y-m-d h:i:s');
+    $guru->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    $user = $this->user->find($guru->user_id);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    $user->nama_lengkap = $request->nama_lengkap;
+    $user->username     = $request->username;
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    
+    if ($request->file('foto')) {
+      $file = $request->file('foto');
+      $file->move('images', $file->getClientOriginalName());
+      $user->foto = $file->getClientOriginalName();
     }
+    
+    $user->updated_at = date('Y-m-d h:i:s');
+    $user->save();
+    
+    return redirect('/admin/guru')->with('sukses', 'BERHASIL MENGEDIT GURU');
+  }
+  
+  public function destroy($id)
+  {
+      //
+  }
 }

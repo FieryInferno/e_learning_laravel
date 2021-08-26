@@ -57,7 +57,7 @@ class JadwalController extends Controller
     $this->jadwal->created_at         = date('Y-m-d h:i:s');
     $this->jadwal->save();
 
-    return redirect('admin/jadwal')->with('sukses', 'Berhasil tambah jadwal');
+    return redirect('admin/jadwal')->with('sukses', 'BERHASIL TAMBAH JADWAL');
   }
   
   public function edit($id)
@@ -81,7 +81,7 @@ class JadwalController extends Controller
     $jadwal->updated_at         = date('Y-m-d h:i:s');
     $jadwal->save();
 
-    return redirect('admin/jadwal')->with('sukses', 'Berhasil edit jadwal');
+    return redirect('admin/jadwal')->with('sukses', 'BERHASIL EDIT JADWAL');
   }
   
   public function destroy($id)
@@ -90,6 +90,6 @@ class JadwalController extends Controller
 
     $jadwal->delete();
 
-    return redirect('admin/jadwal')->with('sukses', 'Berhasil hapus jadwal');
+    return redirect('admin/jadwal')->with('sukses', 'BERHASIL HAPUS JADWAL');
   }
 }

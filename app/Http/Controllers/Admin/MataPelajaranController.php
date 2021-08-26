@@ -33,7 +33,7 @@ class MataPelajaranController extends Controller
     $this->mata_pelajaran->nama_mata_pelajaran  = $request->nama_mata_pelajaran;
     $this->mata_pelajaran->created_at           = date('Y-m-d h:i:s');
     $this->mata_pelajaran->save();
-    return redirect('admin/mata_pelajaran')->with('sukses', 'Berhasil tambah mata pelajaran');
+    return redirect('admin/mata_pelajaran')->with('sukses', 'BERHASIL TAMBAH MATA PELAJARAN');
   }
   
   public function update(Request $request, $id)
@@ -44,7 +44,7 @@ class MataPelajaranController extends Controller
     $mata_pelajaran->updated_at           = date('Y-m-d h:i:s');
     $mata_pelajaran->save();
 
-    return redirect('admin/mata_pelajaran')->with('sukses', 'Berhasil edit mata pelajaran');
+    return redirect('admin/mata_pelajaran')->with('sukses', 'BERHASIL EDIT MATA PELAJARAN');
   }
   
   public function destroy($id)
@@ -53,6 +53,6 @@ class MataPelajaranController extends Controller
 
     $mata_pelajaran->delete();
 
-    return redirect('admin/mata_pelajaran')->with('sukses', 'Berhasil hapus mata pelajaran');
+    return redirect('admin/mata_pelajaran')->with('sukses', 'BERHASIL HAPUS MATA PELAJARAN');
   }
 }

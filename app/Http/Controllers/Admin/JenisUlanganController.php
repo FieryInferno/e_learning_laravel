@@ -33,7 +33,7 @@ class JenisUlanganController extends Controller
     $this->jenis_ulangan->nama_jenis_ulangan  = $request->nama_jenis_ulangan;
     $this->jenis_ulangan->created_at          = date('Y-m-d h:i:s');
     $this->jenis_ulangan->save();
-    return redirect('admin/jenis_ulangan')->with('sukses', 'Berhasil menambahkan jenis ulangan');
+    return redirect('admin/jenis_ulangan')->with('sukses', 'BERHASIL MENAMBAHKAN JENIS ULANGAN');
   }
   
   public function update(Request $request, $id)
@@ -45,7 +45,7 @@ class JenisUlanganController extends Controller
 
     $jenis_ulangan->save();
 
-    return redirect('admin/jenis_ulangan')->with('sukses', 'Berhasil mengedit jenis ulangan');
+    return redirect('admin/jenis_ulangan')->with('sukses', 'BERHASIL MENGEDIT JENIS ULANGAN');
   }
 
   public function destroy($id)
@@ -54,6 +54,6 @@ class JenisUlanganController extends Controller
     
     $jenis_ulangan->delete();
 
-    return redirect('admin/jenis_ulangan')->with('sukses', 'Berhasil menghapus jenis ulangan');
+    return redirect('admin/jenis_ulangan')->with('sukses', 'BERHASIL MENGHAPUS JENIS ULANGAN');
   }
 }
