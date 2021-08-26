@@ -8,6 +8,7 @@ use App\Models\Setting;
 use App\Models\Guru;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
 
 class GuruController extends Controller
 {
@@ -82,6 +83,7 @@ class GuruController extends Controller
     if ($request->file('foto')) {
       $file = $request->file('foto');
       $file->move('images', $file->getClientOriginalName());
+      File::exists(public_path('images/' . $guru->user->foto)) ? File::delete(public_path('images/' . $guru->user->foto)) : '';
       $guru->user->foto = $file->getClientOriginalName();
     }
 
@@ -105,6 +107,7 @@ class GuruController extends Controller
   {
     $guru = $this->guru->find($id);
     
+    File::exists(public_path('images/' . $guru->user->foto)) ? File::delete(public_path('images/' . $guru->user->foto)) : '';
     $guru->user->password = Hash::make($guru->nip);
     $guru->save();
     
