@@ -120,8 +120,8 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="?page=siswa" style="color:#000;">
-                    <img class="menu-icon" src="{{ asset('images/menu_icons/') }}155-student.png" alt="menu icon" style="width:25px;height:25px;"><span class="menu-title">SISWA</span>
+                  <a class="nav-link" href="/admin/siswa" style="color:#000;">
+                    <img class="menu-icon" src="{{ asset('images/menu_icons/155-student.png') }}" alt="menu icon" style="width:25px;height:25px;"><span class="menu-title">SISWA</span>
                   </a>
                 </li>
                 <p></p>

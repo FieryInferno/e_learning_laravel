@@ -4,21 +4,26 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGurusTable extends Migration
+class CreateSiswasTable extends Migration
 {
   
   public function up()
   {
-    Schema::create('guru', function (Blueprint $table) {
+    Schema::create('siswa', function (Blueprint $table) {
       $table->id();
       $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-      $table->string('nip');
+      $table->string('nis');
       $table->timestamps();
     });
   }
-  
-  public function down()
-  {
-    Schema::dropIfExists('guru');
-  }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('siswa');
+    }
 }

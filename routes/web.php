@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\MataPelajaranController;
 use App\Http\Controllers\Admin\JenisUlanganController;
 use App\Http\Controllers\Admin\JadwalController;
 use App\Http\Controllers\Admin\GuruController;
+use App\Http\Controllers\Admin\SiswaController;
 
 Route::get('/', [LoginController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -70,6 +71,16 @@ Route::middleware('auth')->group(function () {
         Route::post('/edit/{id}', [GuruController::class, 'update']);
         Route::delete('/hapus/{id}', [GuruController::class, 'destroy']);
         Route::get('/reset_password/{id}', [GuruController::class, 'resetPassword']);
+      });
+
+      Route::prefix('siswa')->group(function () {
+        Route::get('/', [SiswaController::class, 'index']);
+        Route::get('/tambah', [SiswaController::class, 'create']);
+        Route::post('/tambah', [SiswaController::class, 'store']);
+        Route::get('/edit/{id}', [SiswaController::class, 'edit']);
+        Route::post('/edit/{id}', [SiswaController::class, 'update']);
+        Route::delete('/hapus/{id}', [SiswaController::class, 'destroy']);
+        Route::get('/reset_password/{id}', [SiswaController::class, 'resetPassword']);
       });
     });
   });
