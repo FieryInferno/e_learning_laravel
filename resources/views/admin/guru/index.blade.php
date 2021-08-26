@@ -61,7 +61,11 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                              <a href="/admin/g/hapus/{{ $g->id }}" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                              <form action="/admin/guru/hapus/{{ $g->id }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" type="submit">Hapus</button>
+                              </form>
                             </div>
                           </div>
                         </div>

@@ -93,7 +93,12 @@ class GuruController extends Controller
   
   public function destroy($id)
   {
-      //
+    $guru = $this->guru->find($id);
+
+    $guru->user->delete();
+    $guru->delete();
+    
+    return redirect('/admin/guru')->with('sukses', 'BERHASIL MENGHAPUS GURU');
   }
 
   public function resetPassword($id)

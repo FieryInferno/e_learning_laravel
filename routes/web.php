@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/tambah', [GuruController::class, 'store']);
         Route::get('/edit/{id}', [GuruController::class, 'edit']);
         Route::post('/edit/{id}', [GuruController::class, 'update']);
-        Route::get('/hapus/{id}', [GuruController::class, 'destroy']);
+        Route::delete('/hapus/{id}', [GuruController::class, 'destroy']);
         Route::get('/reset_password/{id}', [GuruController::class, 'resetPassword']);
       });
     });
