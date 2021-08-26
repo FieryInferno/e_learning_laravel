@@ -50,6 +50,7 @@ class GuruController extends Controller
     $this->user->password     = Hash::make($request->nip);
     $this->user->foto         = $file->getClientOriginalName();
     $this->user->created_at   = date('Y-m-d h:i:s');
+    $this->user->role         = 'guru';
     $this->user->save();
 
     $this->guru->user_id    = $this->user->id;
@@ -74,22 +75,18 @@ class GuruController extends Controller
 
     $guru->nip        = $request->nip;
     $guru->updated_at = date('Y-m-d h:i:s');
-    $guru->save();
-
-    $user = $this->user->find($guru->user_id);
-
-    $user->nama_lengkap = $request->nama_lengkap;
-    $user->username     = $request->username;
-
+    $guru->user->nama_lengkap = $request->nama_lengkap;
+    $guru->user->username = $request->username;
+    $guru->user->updated_at = date('Y-m-d h:i:s');
     
     if ($request->file('foto')) {
       $file = $request->file('foto');
       $file->move('images', $file->getClientOriginalName());
-      $user->foto = $file->getClientOriginalName();
+      $guru->user->foto = $file->getClientOriginalName();
     }
-    
-    $user->updated_at = date('Y-m-d h:i:s');
-    $user->save();
+
+    $guru->save();
+    $guru->user->save();
     
     return redirect('/admin/guru')->with('sukses', 'BERHASIL MENGEDIT GURU');
   }
@@ -97,5 +94,15 @@ class GuruController extends Controller
   public function destroy($id)
   {
       //
+  }
+
+  public function resetPassword($id)
+  {
+    $guru = $this->guru->find($id);
+    
+    $guru->user->password = Hash::make($guru->nip);
+    $guru->save();
+    
+    return redirect('/admin/guru')->with('sukses', 'BERHASIL MERESET PASSWORD GURU');
   }
 }
