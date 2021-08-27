@@ -13,16 +13,25 @@
             <form class="forms-sample" action="/admin/guru/tambah" method="post" enctype="multipart/form-data">
               @csrf
               <div class="form-group">
-                <label for="semester">NIP</label>
-                <input type="text" class="form-control" name="nip" style="font-weight: bold;background-color: #212121;color: #fff;" required>
+                <label for="semester">NIS</label>
+                <input type="text" class="form-control" name="nis" style="font-weight: bold;background-color: #212121;color: #fff;" required>
               </div>
               <div class="form-group">
-                <label for="semester">Nama Lengkap dan Gelar</label>
+                <label for="semester">Nama Lengkap</label>
                 <input type="text" class="form-control" name="nama_lengkap" style="font-weight: bold;background-color: #212121;color: #fff;" required>
               </div>
               <div class="form-group">
                 <label for="semester">Username</label>
                 <input type="text" class="form-control" name="username" style="font-weight: bold;background-color: #212121;color: #fff;" required>
+              </div>
+              <div class="form-group">
+                <label for="semester">Kelas</label>
+                <select name="kelas" id="kelas" class="form-control" style="font-weight: bold;background-color: #212121;color: #fff;" required>
+                  <option value="">-- Pilih --</option>
+                  @foreach ($kelas as $k)
+                    <option value="{{ $k->id }}">{{ $k->nama_kelas }}</option>
+                  @endforeach
+                </select>
               </div>
               <div class="form-group">
                 <label for="semester">Foto</label>
@@ -40,7 +49,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      Apakah anda yakin akan menambahkan data guru ini?
+                      Apakah anda yakin akan menambahkan data siswa ini?
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

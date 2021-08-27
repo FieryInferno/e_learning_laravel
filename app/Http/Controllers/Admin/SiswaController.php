@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
 use App\Models\Siswa;
+use App\Models\Kelas;
 
 class SiswaController extends Controller
 {
   private $konfigurasi;
   private $siswa;
+  private $kelas;
 
   public function __construct()
   {
@@ -18,6 +20,8 @@ class SiswaController extends Controller
     $this->konfigurasi  = $this->konfigurasi->first();
 
     $this->siswa  = new Siswa;
+
+    $this->kelas  = new Kelas;
   }
   
   public function index()
@@ -26,27 +30,33 @@ class SiswaController extends Controller
     $data['siswa']        = $this->siswa->get();
     return view('admin/siswa/index', $data);
   }
+  
+  public function create()
+  {
+    $data['konfigurasi']  = $this->konfigurasi;
+    $data['kelas']        = $this->kelas->get();
+    return view('admin/siswa/tambah', $data);
+  }
+  
+  public function store(Request $request)
+  {
+    $this->siswa->user->nama_lengkap = $request->nama_lengkap;
+    $this->siswa->user->username = $request->username;
+    $this->siswa->user->kelas = $request->kelas;
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    $file = $request->file('foto');
+    $file->move('images', $foto->getClientOriginalName());
+    $this->siswa->user->foto  = $foto->getClientOriginalName();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    $this->siswa->user()->save();
+
+    $this->siswa->user_id = $this->siswa->user->id_user;
+    $this->siswa->kelas_id = $this->siswa->kelas_id;
+    $this->siswa->nis     = $request->nis;
+    $this->siswa->save();
+
+    return redirect('/admin/siswa')->with('sukses', 'BERHASIL MENAMBAH DATA SISWA');
+  }
 
     /**
      * Display the specified resource.

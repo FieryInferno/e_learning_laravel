@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Agu 2021 pada 16.55
+-- Waktu pembuatan: 27 Agu 2021 pada 03.57
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -129,17 +129,17 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(11, '2014_10_12_000000_create_users_table', 1),
-(12, '2014_10_12_100000_create_password_resets_table', 1),
-(13, '2019_08_19_000000_create_failed_jobs_table', 1),
-(14, '2021_08_19_031229_create_settings_table', 1),
-(15, '2021_08_22_120034_membuat_table_admin', 1),
-(16, '2021_08_22_142859_create_kelas_table', 1),
-(17, '2021_08_22_151435_create_semesters_table', 1),
-(18, '2021_08_22_153401_create_mata_pelajarans_table', 1),
-(19, '2021_08_22_234430_create_jenis_ulangans_table', 1),
-(20, '2021_08_23_002148_create_jadwals_table', 1),
-(21, '2021_08_24_141831_create_gurus_table', 1);
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2021_08_19_031229_create_settings_table', 1),
+(5, '2021_08_22_142859_create_kelas_table', 1),
+(6, '2021_08_22_151435_create_semesters_table', 1),
+(7, '2021_08_22_153401_create_mata_pelajarans_table', 1),
+(8, '2021_08_22_234430_create_jenis_ulangans_table', 1),
+(9, '2021_08_23_002148_create_jadwals_table', 1),
+(10, '2021_08_24_141831_create_gurus_table', 1),
+(11, '2021_08_26_130342_create_siswas_table', 1);
 
 -- --------------------------------------------------------
 
@@ -203,6 +203,21 @@ INSERT INTO `setting` (`id`, `id_sekolah`, `logo`, `nama_aplikasi`, `nama_sekola
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `siswa`
+--
+
+CREATE TABLE `siswa` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `kelas_id` bigint(20) UNSIGNED NOT NULL,
+  `nis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `users`
 --
 
@@ -223,7 +238,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `id_user`, `username`, `nama_lengkap`, `password`, `role`, `foto`, `created_at`, `updated_at`) VALUES
-(1, '1', 'admin', 'M. Bagas Setia', '$2y$10$o.bt6d8uOH/xk8rPCzEjF.CfzKgvimBTnCYR5IXsG5N/2NHEaz/Pi', 'admin', 'Foto_Wisuda4.jpg', NULL, NULL);
+(1, '1', 'admin', 'M. Bagas Setia', '$2y$10$mb1hGXY36OySCXGQZZVcnO7Lt5pbxGyLR1rLFaHICDQPJIMszmAfC', 'admin', 'Foto_Wisuda4.jpg', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -294,6 +309,14 @@ ALTER TABLE `setting`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `siswa`
+--
+ALTER TABLE `siswa`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `siswa_user_id_foreign` (`user_id`),
+  ADD KEY `siswa_kelas_id_foreign` (`kelas_id`);
+
+--
 -- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
@@ -344,7 +367,7 @@ ALTER TABLE `mata_pelajaran`
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `semester`
@@ -357,6 +380,12 @@ ALTER TABLE `semester`
 --
 ALTER TABLE `setting`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `siswa`
+--
+ALTER TABLE `siswa`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
@@ -380,6 +409,13 @@ ALTER TABLE `guru`
 ALTER TABLE `jadwal`
   ADD CONSTRAINT `jadwal_kelas_id_foreign` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `jadwal_mata_pelajaran_id_foreign` FOREIGN KEY (`mata_pelajaran_id`) REFERENCES `mata_pelajaran` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `siswa`
+--
+ALTER TABLE `siswa`
+  ADD CONSTRAINT `siswa_kelas_id_foreign` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `siswa_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
