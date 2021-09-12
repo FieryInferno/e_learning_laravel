@@ -51,11 +51,13 @@ class RoleGuruController extends Controller
   
   public function store(Request $request)
   {
-    $this->role_guru->guru_id     = auth()->user()->guru->id;
-    $this->role_guru->jadwal_id   = $request->jadwal;
-    $this->role_guru->created_at  = date('Y-m-d h:i:s');
+    $this->role_guru->guru_id         = auth()->user()->guru->id;
+    $this->role_guru->jadwal_id       = $request->jadwal;
+    $this->role_guru->created_at      = date('Y-m-d h:i:s');
     $this->role_guru->jadwal->status  = 'dipilih';
+    
     $this->role_guru->save();
+    $this->role_guru->jadwal->save();
 
     // $jadwal = $this->jadwal->find($request->jadwal);
 
