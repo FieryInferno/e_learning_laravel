@@ -54,60 +54,42 @@ class RoleGuruController extends Controller
     $this->role_guru->guru_id     = auth()->user()->guru->id;
     $this->role_guru->jadwal_id   = $request->jadwal;
     $this->role_guru->created_at  = date('Y-m-d h:i:s');
-
+    $this->role_guru->jadwal->status  = 'dipilih';
     $this->role_guru->save();
 
-    $jadwal = $this->jadwal->find($request->jadwal);
+    // $jadwal = $this->jadwal->find($request->jadwal);
 
-    $jadwal->status = 'dipilih';
+    // $jadwal->status = 'dipilih';
 
-    $jadwal->save();
+    // $jadwal->save();
 
     return redirect('guru/mata_pelajaran')->with('sukses', 'BERHASIL TAMBAH JADWAL');    
   }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+  public function show($id)
+  {
+      //
+  }
+  
+  public function edit($id)
+  {
+      //
+  }
+  
+  public function update(Request $request, $id)
+  {
+      //
+  }
+  
+  public function destroy($id)
+  {
+    $jadwal = $this->role_guru->find($id);
+    
+    $jadwal->jadwal->status = 'belum';
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    $jadwal->save();
+    $jadwal->delete();
+    
+    return redirect()->back()->with('sukses', 'BERHASIL HAPUS JADWAL');
+  }
 }

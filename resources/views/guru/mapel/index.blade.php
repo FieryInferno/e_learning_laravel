@@ -70,7 +70,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                <form action="/admin/guru/hapus/{{ $g->id }}" method="post">
+                                <form action="/guru/mata_pelajaran/hapus/{{ $g->id }}" method="post">
                                   @csrf
                                   @method('DELETE')
                                   <button class="btn btn-danger" type="submit">Hapus</button>
