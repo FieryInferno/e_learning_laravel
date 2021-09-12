@@ -24,12 +24,12 @@
               <thead class="bg-dark text-white">
                 <tr>
                   <th class="text-center" width="5%">No.</th>
-                  <th class="text-center" width="10%">NIP</th> 
-                  <th class="text-center" width="20%">Nama Guru</th> 
+                  <th class="text-center" width="10%">NIP</th>
+                  <th class="text-center" width="20%">Nama Guru</th>
                   <th class="text-center" width="15%">Username</th>
                   <th class="text-center" width="35%">Foto</th>
-                  <th class="text-center" width="15%">Opsi</th>                 
-                </tr>                        
+                  <th class="text-center" width="15%">Opsi</th>
+                </tr>
               </thead>  
               <tbody>
                 <?php $no = 1; ?>
@@ -73,8 +73,18 @@
                     </td>
                   </tr>
                 @endforeach                 
-              </tbody>                      
-            </table>                    
+              </tbody>
+              <tfoot class="bg-dark text-white">
+                <tr>
+                  <th class="text-center" width="5%">No.</th>
+                  <th class="text-center" width="10%">NIP</th>
+                  <th class="text-center" width="20%">Nama Guru</th>
+                  <th class="text-center" width="15%">Username</th>
+                  <th class="text-center" width="35%">Foto</th>
+                  <th class="text-center" width="15%">Opsi</th>
+                </tr>
+              </tfoot>
+            </table>
           </div>
           </div>
         </div> 
