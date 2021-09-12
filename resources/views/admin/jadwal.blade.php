@@ -28,14 +28,25 @@
                 <thead class="bg-dark text-white">
                   <tr>
                     <th class="text-center">No.</th>
-                    <th class="text-center">Mata Pelajaran</th> 
-                    <th class="text-center">Kelas</th> 
+                    <th class="text-center">Mata Pelajaran</th>
+                    <th class="text-center">Kelas</th>
                     <th class="text-center">Hari</th>
                     <th class="text-center">Jam</th>
                     <th class="text-center">Nama Guru</th>
-                    <th class="text-center">Opsi</th>                 
-                  </tr>                        
-                </thead>  
+                    <th class="text-center">Opsi</th>
+                  </tr>
+                </thead>
+                <tfoot class="bg-dark text-white">
+                  <tr>
+                    <th class="text-center">No.</th>
+                    <th class="text-center">Mata Pelajaran</th>
+                    <th class="text-center">Kelas</th>
+                    <th class="text-center">Hari</th>
+                    <th class="text-center">Jam</th>
+                    <th class="text-center">Nama Guru</th>
+                    <th class="text-center">Opsi</th>
+                  </tr>
+                </tfoot>
                 <tbody>
                   <?php $no = 1; ?>
                   @foreach ($jadwal as $jadwal)

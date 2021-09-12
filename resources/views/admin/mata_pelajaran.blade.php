@@ -27,11 +27,18 @@
               <table class="table table-condensed table-striped table-hover" id="data">
                 <thead class="bg-dark text-white">
                   <tr>
-                    <th class="text-center">No.</th> 
-                    <th class="text-center">Nama Mata Pelajaran</th>  
-                    <th class="text-center">Opsi</th>                     
-                  </tr>                        
-                </thead>  
+                    <th class="text-center">No.</th>
+                    <th class="text-center">Nama Mata Pelajaran</th>
+                    <th class="text-center">Opsi</th>
+                  </tr>
+                </thead>
+                <tfoot class="bg-dark text-white">
+                  <tr>
+                    <th class="text-center">No.</th>
+                    <th class="text-center">Nama Mata Pelajaran</th>
+                    <th class="text-center">Opsi</th>
+                  </tr>
+                </tfoot>
                 <tbody>
                   <?php $no = 1; ?>
                   @foreach ($mata_pelajaran as $mata_pelajaran)

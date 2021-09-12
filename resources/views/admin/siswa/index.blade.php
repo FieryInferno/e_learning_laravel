@@ -35,6 +35,16 @@
                     <th class="text-center">Opsi</th>
                   </tr>                        
                 </thead>
+                <tfoot class="bg-dark text-white">
+                  <tr>
+                    <th class="text-center">No.</th> 
+                    <th class="text-center">NIS</th> 
+                    <th class="text-center">Nama Siswa</th> 
+                    <th class="text-center">Kelas</th>
+                    <th class="text-center" width="30%">Foto</th>
+                    <th class="text-center">Opsi</th>
+                  </tr>                        
+                </tfoot>
                 <tbody>
                   <?php $no = 1; ?>
                   @foreach ($siswa as $siswa)
