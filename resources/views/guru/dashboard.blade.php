@@ -21,7 +21,7 @@
                   </div>
                 </div>
                 <hr>            
-                <a href="?page=mapel" class="text-white"><i class="fa fa-chevron-circle-right text-white" aria-hidden="true"></i> Lihat</a>           
+                <a href="/guru/mata_pelajaran" class="text-white"><i class="fa fa-chevron-circle-right text-white" aria-hidden="true"></i> Lihat</a>           
               </div>
             </div>
           </div>

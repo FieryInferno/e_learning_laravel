@@ -6,7 +6,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SemesterController;
-use App\Http\Controllers\MataPelajaranController;
 use App\Http\Controllers\JenisUlanganController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\GuruController;
@@ -22,67 +21,67 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
       Route::get('/', [AdminController::class, 'index']);
       Route::prefix('setting')->group(function () {
-        Route::get('/', [SettingController::class, 'index']);
-        Route::post('/ubah', [SettingController::class, 'update']);
+        Route::get('/', [App\Http\Controllers\SettingController::class, 'index']);
+        Route::post('/ubah', [App\Http\Controllers\SettingController::class, 'update']);
       });
 
       Route::prefix('profile')->group(function () {
-        Route::get('/', [AdminController::class, 'profile']);
-        Route::post('/ubah', [AdminController::class, 'ubahProfile']);
+        Route::get('/', [App\Http\Controllers\AdminController::class, 'profile']);
+        Route::post('/ubah', [App\Http\Controllers\AdminController::class, 'ubahProfile']);
       });
 
       Route::prefix('kelas')->group(function () {
-        Route::get('/', [KelasController::class, 'index']);
-        Route::post('/tambah', [KelasController::class, 'store']);
-        Route::post('/edit/{id}', [KelasController::class, 'update']);
-        Route::get('/hapus/{id}', [KelasController::class, 'destroy']);
+        Route::get('/', [App\Http\Controllers\KelasController::class, 'index']);
+        Route::post('/tambah', [App\Http\Controllers\KelasController::class, 'store']);
+        Route::post('/edit/{id}', [App\Http\Controllers\KelasController::class, 'update']);
+        Route::get('/hapus/{id}', [App\Http\Controllers\KelasController::class, 'destroy']);
       });
 
       Route::prefix('semester')->group(function () {
-        Route::get('/', [SemesterController::class, 'index']);
+        Route::get('/', [App\Http\Controllers\SemesterController::class, 'index']);
       });
 
       Route::prefix('mata_pelajaran')->group(function () {
-        Route::get('/', [MataPelajaranController::class, 'index']);
-        Route::post('/tambah', [MataPelajaranController::class, 'store']);
-        Route::post('/edit/{id}', [MataPelajaranController::class, 'update']);
-        Route::get('/hapus/{id}', [MataPelajaranController::class, 'destroy']);
+        Route::get('/', [App\Http\Controllers\MataPelajaranController::class, 'index']);
+        Route::post('/tambah', [App\Http\Controllers\MataPelajaranController::class, 'store']);
+        Route::post('/edit/{id}', [App\Http\Controllers\MataPelajaranController::class, 'update']);
+        Route::get('/hapus/{id}', [App\Http\Controllers\MataPelajaranController::class, 'destroy']);
       });
 
       Route::prefix('jenis_ulangan')->group(function () {
-        Route::get('/', [JenisUlanganController::class, 'index']);
-        Route::post('/tambah', [JenisUlanganController::class, 'store']);
-        Route::post('/edit/{id}', [JenisUlanganController::class, 'update']);
-        Route::get('/hapus/{id}', [JenisUlanganController::class, 'destroy']);
+        Route::get('/', [App\Http\Controllers\JenisUlanganController::class, 'index']);
+        Route::post('/tambah', [App\Http\Controllers\JenisUlanganController::class, 'store']);
+        Route::post('/edit/{id}', [App\Http\Controllers\JenisUlanganController::class, 'update']);
+        Route::get('/hapus/{id}', [App\Http\Controllers\JenisUlanganController::class, 'destroy']);
       });
 
       Route::prefix('jadwal')->group(function () {
-        Route::get('/', [JadwalController::class, 'index']);
-        Route::get('/tambah', [JadwalController::class, 'create']);
-        Route::post('/tambah', [JadwalController::class, 'store']);
-        Route::get('/edit/{id}', [JadwalController::class, 'edit']);
-        Route::post('/edit/{id}', [JadwalController::class, 'update']);
-        Route::get('/hapus/{id}', [JadwalController::class, 'destroy']);
+        Route::get('/', [App\Http\Controllers\JadwalController::class, 'index']);
+        Route::get('/tambah', [App\Http\Controllers\JadwalController::class, 'create']);
+        Route::post('/tambah', [App\Http\Controllers\JadwalController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\JadwalController::class, 'edit']);
+        Route::post('/edit/{id}', [App\Http\Controllers\JadwalController::class, 'update']);
+        Route::get('/hapus/{id}', [App\Http\Controllers\JadwalController::class, 'destroy']);
       });
 
       Route::prefix('guru')->group(function () {
-        Route::get('/', [GuruController::class, 'index']);
-        Route::get('/tambah', [GuruController::class, 'create']);
-        Route::post('/tambah', [GuruController::class, 'store']);
-        Route::get('/edit/{id}', [GuruController::class, 'edit']);
-        Route::post('/edit/{id}', [GuruController::class, 'update']);
-        Route::delete('/hapus/{id}', [GuruController::class, 'destroy']);
-        Route::get('/reset_password/{id}', [GuruController::class, 'resetPassword']);
+        Route::get('/', [App\Http\Controllers\GuruController::class, 'index']);
+        Route::get('/tambah', [App\Http\Controllers\GuruController::class, 'create']);
+        Route::post('/tambah', [App\Http\Controllers\GuruController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\GuruController::class, 'edit']);
+        Route::post('/edit/{id}', [App\Http\Controllers\GuruController::class, 'update']);
+        Route::delete('/hapus/{id}', [App\Http\Controllers\GuruController::class, 'destroy']);
+        Route::get('/reset_password/{id}', [App\Http\Controllers\GuruController::class, 'resetPassword']);
       });
 
       Route::prefix('siswa')->group(function () {
-        Route::get('/', [SiswaController::class, 'index']);
-        Route::get('/tambah', [SiswaController::class, 'create']);
-        Route::post('/tambah', [SiswaController::class, 'store']);
-        Route::get('/edit/{id}', [SiswaController::class, 'edit']);
-        Route::post('/edit/{id}', [SiswaController::class, 'update']);
-        Route::delete('/hapus/{id}', [SiswaController::class, 'destroy']);
-        Route::get('/reset_password/{id}', [SiswaController::class, 'resetPassword']);
+        Route::get('/', [App\Http\Controllers\SiswaController::class, 'index']);
+        Route::get('/tambah', [App\Http\Controllers\SiswaController::class, 'create']);
+        Route::post('/tambah', [App\Http\Controllers\SiswaController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\SiswaController::class, 'edit']);
+        Route::post('/edit/{id}', [App\Http\Controllers\SiswaController::class, 'update']);
+        Route::delete('/hapus/{id}', [App\Http\Controllers\SiswaController::class, 'destroy']);
+        Route::get('/reset_password/{id}', [App\Http\Controllers\SiswaController::class, 'resetPassword']);
       });
     });
   });
@@ -90,6 +89,10 @@ Route::middleware('auth')->group(function () {
   Route::middleware('is_guru')->group(function () {
     Route::prefix('guru')->group(function () {
       Route::get('/', [App\Http\Controllers\GuruController::class, 'guru']);
+
+      Route::prefix('mata_pelajaran')->group(function () {
+        Route::get('/', [App\Http\Controllers\RoleGuruController::class, 'index']);
+      });
     });
   });
 

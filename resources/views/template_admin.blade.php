@@ -179,7 +179,7 @@
         </button>
       </div>
       <div class="modal-body">
-        Anda yakin akan mengubah profile?
+        Anda yakin akan keluar?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
