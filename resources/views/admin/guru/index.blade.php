@@ -34,7 +34,7 @@
                   <th class="text-center" width="35%">Foto</th>
                   <th class="text-center" width="15%">Opsi</th>
                 </tr>
-              </thead>  
+              </thead>
               <tbody>
                 <?php $no = 1; ?>
                 @foreach ($guru as $g)
