@@ -29,8 +29,6 @@ class RoleGuruController extends Controller
   {
     $data['konfigurasi']  = $this->konfigurasi;
     $data['role_guru']    = $this->role_guru->where('guru_id', auth()->user()->guru->id)->get();
-    // $role_guru  = $this->role_guru->where('guru_id', auth()->user()->guru->id)->first();
-    // dd($role_guru->jadwal->kelas);
     return view('guru/mapel/index', $data);
   }
   
@@ -58,6 +56,12 @@ class RoleGuruController extends Controller
     $this->role_guru->created_at  = date('Y-m-d h:i:s');
 
     $this->role_guru->save();
+
+    $jadwal = $this->jadwal->find($request->jadwal);
+
+    $jadwal->status = 'dipilih';
+
+    $jadwal->save();
 
     return redirect('guru/mata_pelajaran')->with('sukses', 'BERHASIL TAMBAH JADWAL');    
   }
