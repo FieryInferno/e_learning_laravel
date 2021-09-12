@@ -48,17 +48,16 @@ class RoleGuruController extends Controller
                 ->get();
     return response()->json($jadwal);
   }
+  
+  public function store(Request $request)
+  {
+    $this->role_guru->guru_id   = auth()->user()->guru->id;
+    $this->role_guru->jadwal_id = $request->jadwal;
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    $this->role_guru->save();
+
+    return redirect('guru/mata_pelajaran')->with('sukses', 'BERHASIL TAMBAH JADWAL');    
+  }
 
     /**
      * Display the specified resource.

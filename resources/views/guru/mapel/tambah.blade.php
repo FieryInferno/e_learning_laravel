@@ -81,7 +81,7 @@
           if (result.length > 0) {
             isi = '<option value="">Pilih Jadwal</option>';
             result.forEach(element => {
-              isi += `<option value="${element.id_jadwal}">${element.hari + ' | ' + element.jam_mulai + ' - ' + element.jam_selesai}</option>`;
+              isi += `<option value="${element.id}">${element.hari + ' | ' + element.jam_mulai + ' - ' + element.jam_selesai}</option>`;
             });
           } else {
             isi = '<option value="">Jadwal tidak ada</option>';
