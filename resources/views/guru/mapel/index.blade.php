@@ -28,20 +28,20 @@
                 <thead class="bg-dark text-white">
                   <tr>
                     <th class="text-center">No.</th> 
-                    <th class="text-center">NIS</th> 
-                    <th class="text-center">Nama Siswa</th> 
-                    <th class="text-center">Kelas</th>
-                    <th class="text-center" width="30%">Foto</th>
+                    <th class="text-center">Kelas</th> 
+                    <th class="text-center">Mata Pelajaran</th> 
+                    <th class="text-center">Semester</th>
+                    <th class="text-center">Jadwal</th>
                     <th class="text-center">Opsi</th>
                   </tr>                        
                 </thead>
                 <tfoot class="bg-dark text-white">
                   <tr>
                     <th class="text-center">No.</th> 
-                    <th class="text-center">NIS</th> 
-                    <th class="text-center">Nama Siswa</th> 
-                    <th class="text-center">Kelas</th>
-                    <th class="text-center" width="30%">Foto</th>
+                    <th class="text-center">Kelas</th> 
+                    <th class="text-center">Mata Pelajaran</th> 
+                    <th class="text-center">Semester</th>
+                    <th class="text-center">Jadwal</th>
                     <th class="text-center">Opsi</th>
                   </tr>                        
                 </tfoot>

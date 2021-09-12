@@ -1,25 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\SettingController;
-use App\Http\Controllers\KelasController;
-use App\Http\Controllers\SemesterController;
-use App\Http\Controllers\JenisUlanganController;
-use App\Http\Controllers\JadwalController;
-use App\Http\Controllers\GuruController;
-use App\Http\Controllers\SiswaController;
 
-
-
-Route::get('/', [LoginController::class, 'login'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/', [App\Http\Controllers\LoginController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticate']);
 
 Route::middleware('auth')->group(function () {
   Route::middleware('is_admin')->group(function () {
     Route::prefix('admin')->group(function () {
-      Route::get('/', [AdminController::class, 'index']);
+      Route::get('/', [App\Http\Controllers\AdminController::class, 'index']);
       Route::prefix('setting')->group(function () {
         Route::get('/', [App\Http\Controllers\SettingController::class, 'index']);
         Route::post('/ubah', [App\Http\Controllers\SettingController::class, 'update']);
@@ -92,9 +81,11 @@ Route::middleware('auth')->group(function () {
 
       Route::prefix('mata_pelajaran')->group(function () {
         Route::get('/', [App\Http\Controllers\RoleGuruController::class, 'index']);
+        Route::get('/tambah', [App\Http\Controllers\RoleGuruController::class, 'create']);
+        Route::post('/get_jadwal', [App\Http\Controllers\RoleGuruController::class, 'getJadwal']);
       });
     });
   });
 
-  Route::get('/logout', [LoginController::class, 'logout']);
+  Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout']);
 });

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Models\Setting;
 use App\Models\RoleGuru;
+use App\Models\MataPelajaran;
+use App\Models\Kelas;
+use App\Models\Jadwal;
 
 class RoleGuruController extends Controller
 {
@@ -16,7 +19,10 @@ class RoleGuruController extends Controller
     $this->konfigurasi  = new Setting;
     $this->konfigurasi  = $this->konfigurasi->first();
     
-    $this->role_guru  = new RoleGuru;
+    $this->role_guru      = new RoleGuru;
+    $this->mata_pelajaran = new MataPelajaran;
+    $this->kelas          = new Kelas;
+    $this->jadwal         = new Jadwal;
   }
   
   public function index()
@@ -25,16 +31,23 @@ class RoleGuruController extends Controller
     $data['role_guru']    = $this->role_guru->where('guru_id', auth()->user()->guru->id)->get();
     return view('guru/mapel/index', $data);
   }
+  
+  public function create()
+  {
+    $data['konfigurasi']    = $this->konfigurasi;
+    $data['mata_pelajaran'] = $this->mata_pelajaran->get();
+    $data['kelas']          = $this->kelas->get();
+    return view('guru/mapel/tambah', $data);
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+  public function getJadwal(Request $request)
+  {
+    $jadwal = $this->jadwal
+                ->where('mata_pelajaran_id', $request->mata_pelajaran_id)
+                ->where('kelas_id', $request->kelas_id)
+                ->get();
+    return response()->json($jadwal);
+  }
 
     /**
      * Store a newly created resource in storage.

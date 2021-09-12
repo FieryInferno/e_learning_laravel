@@ -1,32 +1,29 @@
 @extends('template_admin')
 @section('konten')
   <div class="content-wrapper">
-    <h3> <b>Tambah Guru</b> <small class="text-muted"></small></h3>
+    <h3> <b>Tambah Jadwal</b> <small class="text-muted"></small></h3>
     <hr>
     <div class="row">
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Tambah Guru</h4>
+            <h4 class="card-title">Tambah Jadwal</h4>
             <p class="card-description"></p>
             <hr>
-            <form class="forms-sample" action="/admin/guru/tambah" method="post" enctype="multipart/form-data">
+            <form class="forms-sample" action="/guru/mata_pelajaran/tambah" method="post" enctype="multipart/form-data">
               @csrf
               <div class="form-group">
-                <label for="semester">NIS</label>
-                <input type="text" class="form-control" name="nis" style="font-weight: bold;background-color: #212121;color: #fff;" required>
-              </div>
-              <div class="form-group">
-                <label for="semester">Nama Lengkap</label>
-                <input type="text" class="form-control" name="nama_lengkap" style="font-weight: bold;background-color: #212121;color: #fff;" required>
-              </div>
-              <div class="form-group">
-                <label for="semester">Username</label>
-                <input type="text" class="form-control" name="username" style="font-weight: bold;background-color: #212121;color: #fff;" required>
+                <label for="semester">Mata Pelajaran</label>
+                <select name="mata_pelajaran" id="mata_pelajaran" class="form-control" style="font-weight: bold;background-color: #212121;color: #fff;" required onchange="pilihJadwal(this)">
+                  <option value="">-- Pilih --</option>
+                  @foreach ($mata_pelajaran as $k)
+                    <option value="{{ $k->id }}">{{ $k->nama_mata_pelajaran }}</option>
+                  @endforeach
+                </select>
               </div>
               <div class="form-group">
                 <label for="semester">Kelas</label>
-                <select name="kelas" id="kelas" class="form-control" style="font-weight: bold;background-color: #212121;color: #fff;" required>
+                <select name="kelas" id="kelas" class="form-control" style="font-weight: bold;background-color: #212121;color: #fff;" required onchange="pilihJadwal(this)">
                   <option value="">-- Pilih --</option>
                   @foreach ($kelas as $k)
                     <option value="{{ $k->id }}">{{ $k->nama_kelas }}</option>
@@ -34,11 +31,14 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="semester">Foto</label>
-                <input type="file" class="form-control" name="foto" style="font-weight: bold;background-color: #212121;color: #fff;" required>
+                <label for="semester">Jadwal</label>
+                <select name="jadwal" id="jadwal" class="form-control" style="font-weight: bold;background-color: #212121;color: #fff;" required>
+                  <option value="">-- Pilih --</option>
+                </select>
               </div>
 
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Simpan</button>
+
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -59,11 +59,36 @@
                 </div>
               </div>
 
-              <a href="/admin/guru" class="btn btn-danger">Batal</a>
+              <a href="/guru/mata_pelajaran" class="btn btn-danger">Batal</a>
             </form>
           </div>
         </div> 
       </div>
     </div>
   </div>
+  <script>
+    function pilihJadwal(data) {
+      $.ajax({
+        url   : '/guru/mata_pelajaran/get_jadwal',
+        type  : 'post',
+        data  : {
+          _token            : "{{ csrf_token() }}",
+          mata_pelajaran_id : $('#mata_pelajaran').val(),
+          kelas_id          : $('#kelas').val(),
+        },
+        success : function(result) {
+          console.log(result);
+          if (result.length > 0) {
+            isi = '<option value="">Pilih Jadwal</option>';
+            result.forEach(element => {
+              isi += `<option value="${element.id_jadwal}">${element.hari + ' | ' + element.jam_mulai + ' - ' + element.jam_selesai}</option>`;
+            });
+          } else {
+            isi = '<option value="">Jadwal tidak ada</option>';
+          }
+          $('#jadwal').html(isi);
+        }
+      });
+    }
+  </script>
 @endsection
