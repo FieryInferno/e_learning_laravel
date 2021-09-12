@@ -3,13 +3,17 @@
   <div class="content-wrapper">
     <h3> <b>Guru</b> <small class="text-muted"></small></h3>
     <hr>
+    <div class="row purchace-popup">
+      <div class="col-md-12">
+        <span class="d-flex alifn-items-center">
+          <a href="/admin/guru/tambah" class="btn btn-dark"><i class="fa fa-plus"></i> Tambah Guru</a>
+        </span>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
-          <p class="card-description">
-            <a href="/admin/guru/tambah" class="btn btn-info text-white"><i class="fa fa-plus"></i> Tambah Guru</a> <br>
-          </p>
           <h4 class="card-title">Data Guru</h4>
           <div class="table-responsive">
             @if (session('sukses'))
