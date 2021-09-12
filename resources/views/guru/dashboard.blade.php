@@ -16,7 +16,7 @@
                   <div class="float-right">
                     <p class="card-text text-right font-weight-bold text-white">Jumlah Jadwal</p>
                     <div class="fluid-container">
-                      <h3 class="card-title font-weight-bold text-center mb-0 text-white">$jumlah_jadwal</h3>
+                      <h3 class="card-title font-weight-bold text-center mb-0 text-white"><?= $jadwal; ?></h3>
                     </div>
                   </div>
                 </div>

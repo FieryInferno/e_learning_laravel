@@ -12,6 +12,7 @@ use App\Models\RoleGuru;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class GuruController extends Controller
 {
@@ -122,7 +123,7 @@ class GuruController extends Controller
   public function guru()
   {
     $data['konfigurasi']  = $this->konfigurasi;
-    $data['jadwal']       = $this->role_guru->where('guru_id', auth()->user()->guru()->id_guru)->count();
-    return view('guru/dashboard', $data);  
+    $data['jadwal']       = $this->role_guru->where('guru_id', auth()->user()->guru->id)->count();
+    return view('guru/dashboard', $data);
   }
 }

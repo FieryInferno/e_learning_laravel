@@ -11,7 +11,7 @@ class CreateRoleGurusTable extends Migration
   {
     Schema::create('role_guru', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('guru_id')->constrained('guru')->onUpdate('cascade')->onDelete('cascade');
+      $table->foreignId('guru_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
       $table->foreignId('jadwal_id')->constrained('jadwal')->onUpdate('cascade')->onDelete('cascade');
       $table->timestamps();
     });
