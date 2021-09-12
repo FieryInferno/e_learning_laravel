@@ -19,4 +19,9 @@ class Jadwal extends Model
   {
     return $this->hasOne(Kelas::class, 'id', 'kelas_id');
   }
+
+  public function guru()
+  {
+    return $this->hasOne(RoleGuru::class, 'jadwal_id', 'id');
+  }
 }

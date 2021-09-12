@@ -34,6 +34,8 @@ class JadwalController extends Controller
   {
     $data['konfigurasi']  = $this->konfigurasi;
     $data['jadwal']       = $this->jadwal->get();
+    // $jadwal = $this->jadwal->find(2);
+    // dd($jadwal->guru->guru->user->nama_lengkap);
     return view('admin/jadwal', $data);
   }
   

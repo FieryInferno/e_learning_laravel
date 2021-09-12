@@ -19,4 +19,9 @@ class RoleGuru extends Model
   {
     return $this->belongsTo(MataPelajaran::class);
   }
+
+  public function guru()
+  {
+    return $this->belongsTo(Guru::class, 'guru_id', 'id');
+  }
 }

@@ -56,7 +56,7 @@
                       <td class="text-center">{{ $jadwal->kelas->nama_kelas }}</td>
                       <td class="text-center">{{ $jadwal->hari }}</td>
                       <td class="text-center">{{ substr($jadwal->jam_mulai, 0, 5) . ' - ' . substr($jadwal->jam_selesai, 0, 5) }}</td>
-                      <td class="text-center"></td>
+                      <td class="text-center">{{ $jadwal->guru ? $jadwal->guru->guru->user->nama_lengkap : '' }}</td>
                       <td class="text-center">
                         <a href="/admin/jadwal/edit/{{ $jadwal->id }}" class="btn btn-success"><i class="fa fa-pencil"></i> Edit</a>
 
