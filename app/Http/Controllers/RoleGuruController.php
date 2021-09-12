@@ -61,15 +61,18 @@ class RoleGuruController extends Controller
    
     return redirect('guru/mata_pelajaran')->with('sukses', 'BERHASIL TAMBAH JADWAL');    
   }
-
-  public function show($id)
-  {
-      //
-  }
   
   public function edit($id)
   {
-      //
+    $data['role']         = $this->role_guru->find($id);
+    $data['mapel']        = $this->mata_pelajaran->get();
+    $data['kelas']        = $this->kelas->get();
+    $data['konfigurasi']  = $this->konfigurasi;
+    $data['jadwal']       = $this->jadwal
+                              ->where('mata_pelajaran_id', $data['role']->jadwal->mata_pelajaran_id)
+                              ->where('kelas_id', $data['role']->jadwal->kelas_id)
+                              ->get();
+    return view('guru/mapel/edit', $data);
   }
   
   public function update(Request $request, $id)

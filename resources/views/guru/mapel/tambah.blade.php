@@ -1,4 +1,4 @@
-@extends('template_admin')
+@extends('template_guru')
 @section('konten')
   <div class="content-wrapper">
     <h3> <b>Tambah Jadwal</b> <small class="text-muted"></small></h3>

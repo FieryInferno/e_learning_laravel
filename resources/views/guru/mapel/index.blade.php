@@ -1,7 +1,7 @@
-@extends('template_admin')
+@extends('template_guru')
 @section('konten')
   <div class="content-wrapper">
-    <h3> <b>Siswa</b> <small class="text-muted"></small></h3>
+    <h3> <b>Data Mata Pelajaran Guru</b> <small class="text-muted"></small></h3>
     <hr>
     <div class="row purchace-popup">
       <div class="col-md-12">
@@ -52,7 +52,7 @@
                       <td class="text-center">{{ $g->jadwal->mata_pelajaran->nama_mata_pelajaran }}</td>
                       <td class="text-center">{{ $g->jadwal->hari . ', ' . $g->jadwal->jam_mulai . ' - ' . $g->jadwal->jam_selesai }}</td>
                       <td class="text-center">
-                        <a href="/admin/guru/edit/{{ $g->id }}" class="btn btn-success"><i class="fa fa-pencil"></i> Edit</a>
+                        <a href="/guru/mata_pelajaran/edit/{{ $g->id }}" class="btn btn-success"><i class="fa fa-pencil"></i> Edit</a>
                         
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus{{ $g->id }}"><i class="fa fa-trash"></i> Hapus</button>
                         
