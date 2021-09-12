@@ -77,7 +77,21 @@ class RoleGuruController extends Controller
   
   public function update(Request $request, $id)
   {
-      //
+    $role = $this->role_guru->find($id);
+    
+    if ($role->jadwal_id !== $request->jadwal) {
+      $role->jadwal->status = 'belum';
+      $role->jadwal->save();
+
+      $role->jadwal_id  = $request->jadwal;
+    }
+    $role->updated_at      = date('Y-m-d h:i:s');
+    $role->jadwal->status  = 'dipilih';
+    
+    $role->save();
+    $role->jadwal->save();
+
+    return redirect('/guru/mata_pelajaran')->with('sukses', 'BERHASIL EDIT JADWAL');
   }
   
   public function destroy($id)

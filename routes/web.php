@@ -86,6 +86,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/get_jadwal', [App\Http\Controllers\RoleGuruController::class, 'getJadwal']);
         Route::delete('/hapus/{id}', [App\Http\Controllers\RoleGuruController::class, 'destroy']);
         Route::get('/edit/{id}', [App\Http\Controllers\RoleGuruController::class, 'edit']);
+        Route::put('/edit/{id}', [App\Http\Controllers\RoleGuruController::class, 'update']);
       });
     });
   });

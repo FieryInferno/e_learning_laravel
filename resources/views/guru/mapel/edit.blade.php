@@ -12,6 +12,7 @@
             <hr>
             <form class="forms-sample" action="/guru/mata_pelajaran/edit/{{ $role->id }}" method="post" enctype="multipart/form-data">
               @csrf
+              @method('PUT')
               <div class="form-group">
                 <label for="semester">Mata Pelajaran</label>
                 <select name="mata_pelajaran" id="mata_pelajaran" class="form-control" style="font-weight: bold;background-color: #212121;color: #fff;" required onchange="pilihJadwal(this)">
