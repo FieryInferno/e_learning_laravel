@@ -58,13 +58,7 @@ class RoleGuruController extends Controller
     
     $this->role_guru->save();
     $this->role_guru->jadwal->save();
-
-    // $jadwal = $this->jadwal->find($request->jadwal);
-
-    // $jadwal->status = 'dipilih';
-
-    // $jadwal->save();
-
+    
     return redirect('guru/mata_pelajaran')->with('sukses', 'BERHASIL TAMBAH JADWAL');    
   }
 
