@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use App\Models\Setting;
 use App\Models\Guru;
 use App\Models\User;
+use App\Models\RoleGuru;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\File;
 
@@ -15,11 +18,13 @@ class GuruController extends Controller
   private $konfigurasi;
   private $guru;
   private $user;
+  private $role_guru;
 
   public function __construct()
   {
-    $this->guru = new Guru;
-    $this->user = new User;
+    $this->guru       = new Guru;
+    $this->user       = new User;
+    $this->role_guru  = new RoleGuru;
 
     $this->konfigurasi  = new Setting;
     $this->konfigurasi  = $this->konfigurasi->first();
@@ -117,6 +122,7 @@ class GuruController extends Controller
   public function guru()
   {
     $data['konfigurasi']  = $this->konfigurasi;
+    $data['jadwal']       = $this->role_guru->where('guru_id', auth()->user()->guru()->id_guru)->count();
     return view('guru/dashboard', $data);  
   }
 }
