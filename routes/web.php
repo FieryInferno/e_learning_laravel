@@ -2,15 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\KelasController;
-use App\Http\Controllers\Admin\SemesterController;
-use App\Http\Controllers\Admin\MataPelajaranController;
-use App\Http\Controllers\Admin\JenisUlanganController;
-use App\Http\Controllers\Admin\JadwalController;
-use App\Http\Controllers\Admin\GuruController;
-use App\Http\Controllers\Admin\SiswaController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\SemesterController;
+use App\Http\Controllers\MataPelajaranController;
+use App\Http\Controllers\JenisUlanganController;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\GuruController;
+use App\Http\Controllers\SiswaController;
+
+
 
 Route::get('/', [LoginController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -82,6 +84,12 @@ Route::middleware('auth')->group(function () {
         Route::delete('/hapus/{id}', [SiswaController::class, 'destroy']);
         Route::get('/reset_password/{id}', [SiswaController::class, 'resetPassword']);
       });
+    });
+  });
+
+  Route::middleware('is_guru')->group(function () {
+    Route::prefix('guru')->group(function () {
+      Route::get('/', [App\Http\Controllers\GuruController::class, 'guru']);
     });
   });
 
