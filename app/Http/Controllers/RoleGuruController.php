@@ -58,7 +58,7 @@ class RoleGuruController extends Controller
     
     $this->role_guru->save();
     $this->role_guru->jadwal->save();
-    
+   
     return redirect('guru/mata_pelajaran')->with('sukses', 'BERHASIL TAMBAH JADWAL');    
   }
 
@@ -79,12 +79,12 @@ class RoleGuruController extends Controller
   
   public function destroy($id)
   {
-    $jadwal = $this->role_guru->find($id);
+    $role_guru = $this->role_guru->find($id);
     
-    $jadwal->jadwal->status = 'belum';
+    $role_guru->jadwal->status = 'belum';
 
-    $jadwal->save();
-    $jadwal->delete();
+    $role_guru->jadwal->save();
+    $role_guru->delete();
     
     return redirect()->back()->with('sukses', 'BERHASIL HAPUS JADWAL');
   }
