@@ -12,6 +12,13 @@
             <hr>
             <form class="forms-sample" action="/admin/guru/tambah" method="post" enctype="multipart/form-data">
               @csrf
+              <div class="text-center">
+                <img class="img-thumbnail img-preview" id="anggota-img" width="40%">
+              </div>
+              <div class="form-group">
+                <label for="semester">Foto</label>
+                <input type="file" class="form-control" name="foto" style="font-weight: bold;background-color: #212121;color: #fff;" required onchange="previewImg()" id="foto">
+              </div>
               <div class="form-group">
                 <label for="semester">NIP</label>
                 <input type="text" class="form-control" name="nip" style="font-weight: bold;background-color: #212121;color: #fff;" required>
@@ -23,10 +30,6 @@
               <div class="form-group">
                 <label for="semester">Username</label>
                 <input type="text" class="form-control" name="username" style="font-weight: bold;background-color: #212121;color: #fff;" required>
-              </div>
-              <div class="form-group">
-                <label for="semester">Foto</label>
-                <input type="file" class="form-control" name="foto" style="font-weight: bold;background-color: #212121;color: #fff;" required>
               </div>
 
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Simpan</button>
@@ -57,4 +60,16 @@
       </div>
     </div>
   </div>
+  <script>
+    function previewImg() {
+      const gambar      = document.querySelector('#foto');
+      const imgPreview  = document.querySelector('.img-preview');
+      // label.textContent = gambar.files[0].name;
+      const file = new FileReader();
+      file.readAsDataURL(gambar.files[0]);
+      file.onload = function(e) {
+        imgPreview.src = e.target.result;
+      }
+    }
+  </script>
 @endsection
