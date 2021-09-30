@@ -9,6 +9,7 @@ use App\Models\Setting;
 use App\Models\Guru;
 use App\Models\User;
 use App\Models\RoleGuru;
+use App\Models\Tugas;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\File;
@@ -20,12 +21,14 @@ class GuruController extends Controller
   private $guru;
   private $user;
   private $role_guru;
+  private $tugas;
 
   public function __construct()
   {
     $this->guru       = new Guru;
     $this->user       = new User;
     $this->role_guru  = new RoleGuru;
+    $this->tugas      = new Tugas;
 
     $this->konfigurasi  = new Setting;
     $this->konfigurasi  = $this->konfigurasi->first();
@@ -124,6 +127,7 @@ class GuruController extends Controller
   {
     $data['konfigurasi']  = $this->konfigurasi;
     $data['jadwal']       = $this->role_guru->where('guru_id', auth()->user()->guru->id)->count();
+    $data['tugas']        = $this->tugas->where('guru_id', auth()->user()->guru->id)->count();
     return view('guru/dashboard', $data);
   }
 }
