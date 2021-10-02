@@ -40,7 +40,7 @@
                   </div>
                 </div>
                 <hr>            
-                <a href="?page=tugas&act=view" class="text-white"><i class="fa fa-chevron-circle-right text-white" aria-hidden="true"></i> Lihat</a>           
+                <a href="/guru/tugas" class="text-white"><i class="fa fa-chevron-circle-right text-white" aria-hidden="true"></i> Lihat</a>           
               </div>
             </div>
           </div>

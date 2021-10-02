@@ -88,6 +88,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/{id}', [App\Http\Controllers\RoleGuruController::class, 'edit']);
         Route::put('/edit/{id}', [App\Http\Controllers\RoleGuruController::class, 'update']);
       });
+
+      Route::prefix('tugas')->group(function () {
+        Route::get('/', [App\Http\Controllers\TugasController::class, 'index']);
+      });
     });
   });
 
